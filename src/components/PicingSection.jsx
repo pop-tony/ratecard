@@ -15,7 +15,7 @@ const fadeUp = {
   }),
 }
 
-// Add 'desc' and 'images' to each package. Drop your image URLs in the arrays.
+// Add desc + images to each package. Drop your image URLs in images: []
 const PRICING_DATA = {
   wedding: [
     { id: 1, name: 'Luxe Court', price: 'GHS 6,000', popular: false,
@@ -24,7 +24,7 @@ const PRICING_DATA = {
     },
     { id: 2, name: 'Deluxe Court', price: 'GHS 9,000', popular: false,
       desc: 'Extended court train with lace appliqué and crystal detailing. 4 fittings included.',
-      images: ['/images/deluxe-court-1.jpg']
+      images: []
     },
     { id: 3, name: 'Classic Plain', price: 'GHS 8,000', popular: false,
       desc: 'Minimalist crepe gown with clean lines. Perfect for modern brides. 3 fittings.',
@@ -36,7 +36,7 @@ const PRICING_DATA = {
     },
     { id: 5, name: 'Deluxe Plain + Detachable', price: 'GHS 14,000', popular: true,
       desc: 'Two looks in one. Detachable overskirt + fitted base gown. 5 fittings included.',
-      images: ['/images/deluxe-detach-1.jpg', '/images/deluxe-detach-2.jpg']
+      images: []
     },
     { id: 6, name: 'Classic Lace', price: 'GHS 14,000', popular: false,
       desc: 'All-over Chantilly lace with illusion back. Timeless romantic feel. 4 fittings.',
@@ -58,23 +58,6 @@ const PRICING_DATA = {
       desc: 'Bespoke ball gown with hand-draped bodice, 3D florals, and chapel train. 8 fittings.',
       images: []
     },
-    { id: 11, name: 'Luxe Wedding Gown', price: 'GHS 17,000 - GHS 25,000', popular: false,
-      desc: 'Bespoke ball gown with hand-draped bodice, 3D florals, and chapel train. 8 fittings.',
-      images: []
-    },
-    { id: 12, name: 'Deluxe Wedding Gown', price: 'GHS 25,000 - GHS 35,000', popular: false,
-      desc: 'Bespoke ball gown with hand-draped bodice, 3D florals, and chapel train. 8 fittings.',
-      images: []
-    },
-    { id: 13, name: 'Classic Lace Gown', price: 'GHS 14,000 - GHS 17,000', popular: false,
-      desc: 'Bespoke ball gown with hand-draped bodice, 3D florals, and chapel train. 8 fittings.',
-      images: []
-    },
-    { id: 14, name: 'Normal Beaded Classic Lace Gown', price: 'GHS 9,500 - GHS 13,000', popular: false,
-      desc: 'Bespoke ball gown with hand-draped bodice, 3D florals, and chapel train. 8 fittings.',
-      images: []
-    },
-    
   ],
   bridal: [
     { id: 1, name: 'Luxe', price: 'GHS 2,500', popular: false,
@@ -150,12 +133,8 @@ const PricingSection = () => {
   const handleCheckout = (e) => {
     e.preventDefault()
     // YOU HANDLE PAYSTACK HERE
-    // const amount = parseInt(selectedPackage.price.replace(/[^0-9]/g, '')) * 100
-    // PaystackPop.setup({ key: 'pk_xxx', email: clientData.email, amount, callback: () => setStep('success') }).openIframe()
     setTimeout(() => setStep('success'), 800) // simulate
   }
-
-  const priceNumber = selectedPackage? parseInt(selectedPackage.price.replace(/[^0-9]/g, '')) : 0
 
   return (
     <>
@@ -164,85 +143,89 @@ const PricingSection = () => {
         initial='hidden'
         whileInView='visible'
         viewport={{ once: true, amount: 0.1 }}
-        className='m-3 relative mx-auto max-w-7xl bg-white px-4 py-20 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 sm:px-6 lg:py-28'
+        className='relative mx-auto max-w-7xl bg-white px-4 py-16 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 sm:px-6 sm:py-20 lg:py-28'
       >
         <div className='pointer-events-none absolute inset-0 -z-10 opacity-60 dark:opacity-40'>
-          <div className='absolute left-1/2 top-0 h- w- -translate-x-1/2 rounded-full bg-rose-200/60 blur- dark:bg-rose-500/20' />
+          <div className='absolute left-1/2 top-0 h- w- -translate-x-1/2 rounded-full bg-rose-200/60 blur- dark:bg-rose-500/20 sm:h- sm:w- sm:blur-' />
         </div>
 
-        <motion.div variants={fadeUp} className='mb-12 text-center md:mb-16'>
-          <span className='mb-4 inline-block rounded-full border border-rose-300 bg-rose-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-rose-600 dark:border-rose-400/20 dark:bg-rose-500/10 dark:text-rose-300'>
+        <motion.div variants={fadeUp} className='mb-10 text-center md:mb-16'>
+          <span className='mb-3 inline-block rounded-full border border-rose-300 bg-rose-50 px-3 py-1 text- font-semibold uppercase tracking-wider text-rose-600 dark:border-rose-400/20 dark:bg-rose-500/10 dark:text-rose-300 sm:px-4 sm:py-1.5 sm:text-xs'>
             Investment
           </span>
-          <h2 className='bg-gradient-to-b from-zinc-900 to-zinc-600 bg-clip-text text-4xl font-black text-transparent dark:from-white dark:to-zinc-400 sm:text-5xl md:text-6xl'>
+          <h2 className='bg-gradient-to-b from-zinc-900 to-zinc-600 bg-clip-text text-3xl font-black text-transparent dark:from-white dark:to-zinc-400 sm:text-4xl md:text-5xl lg:text-6xl'>
             Packages & Pricing
           </h2>
-          <p className='mx-auto mt-4 max-w-2xl text-balance text-zinc-600 dark:text-zinc-400 sm:text-lg'>
+          <p className='mx-auto mt-3 max-w-2xl text-balance text-sm text-zinc-600 dark:text-zinc-400 sm:mt-4 sm:text-base lg:text-lg'>
             Transparent rates for your dream day. Custom quotes available for unique visions.
           </p>
         </motion.div>
 
+        {/* Tabs - scrollable on mobile */}
         <motion.div
           variants={fadeUp}
           custom={1}
-          className='mb-10 flex flex-wrap justify-center gap-2 rounded-2xl border border-zinc-200 bg-zinc-100/80 p-1.5 backdrop-blur-xl dark:border-white/10 dark:bg-zinc-900/40 sm:gap-1'
+          className='mb-8 flex justify-start overflow-x-auto rounded-2xl border border-zinc-200 bg-zinc-100/80 p-1.5 backdrop-blur-xl dark:border-white/10 dark:bg-zinc-900/40 sm:mb-10 sm:justify-center'
         >
-          {TABS.map((tab) => (
-            <button
-              key={tab.key}
-              onClick={() => setActiveTab(tab.key)}
-              className={`relative rounded-xl px-4 py-2.5 text-sm font-semibold transition-colors duration-200 sm:px-6 ${
-                activeTab === tab.key
-                ? 'text-white dark:text-zinc-900'
-                  : 'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200'
-              }`}
-            >
-              {activeTab === tab.key && (
-                <motion.div
-                  layoutId='activeTab'
-                  className='absolute inset-0 rounded-xl bg-gradient-to-r from-rose-500 to-amber-500'
-                  transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
-                />
-              )}
-              <span className='relative z-10'>{tab.label}</span>
-            </button>
-          ))}
+          <div className='flex gap-1 sm:gap-1'>
+            {TABS.map((tab) => (
+              <button
+                key={tab.key}
+                onClick={() => setActiveTab(tab.key)}
+                className={`relative whitespace-nowrap rounded-xl px-3 py-2 text-xs font-semibold transition-colors duration-200 sm:px-4 sm:py-2.5 sm:text-sm lg:px-6 ${
+                  activeTab === tab.key
+                 ? 'text-white dark:text-zinc-900'
+                    : 'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200'
+                }`}
+              >
+                {activeTab === tab.key && (
+                  <motion.div
+                    layoutId='activeTab'
+                    className='absolute inset-0 rounded-xl bg-gradient-to-r from-rose-500 to-amber-500'
+                    transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
+                <span className='relative z-10'>{tab.label}</span>
+              </button>
+            ))}
+          </div>
         </motion.div>
 
+        {/* Cards - 1 col mobile, 2 sm, 3 lg, 4 xl */}
         <motion.div
           key={activeTab}
           initial='hidden'
           animate='visible'
           transition={{ staggerChildren: 0.05 }}
-          className='grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
+          className='grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 xl:grid-cols-4'
         >
           {activeTier.map((tier, i) => (
             <motion.div
               key={tier.id}
               custom={i}
               variants={fadeUp}
-              whileHover={{ y: -6 }}
-              className={`group relative flex flex-col rounded-3xl border p-6 transition-all duration-300 sm:p-7 ${
+              whileHover={{ y: -4 }}
+              className={`group relative flex flex-col rounded-2xl border p-5 transition-all duration-300 sm:rounded-3xl sm:p-6 lg:p-7 ${
                 tier.popular
-                ? 'border-rose-300 bg-gradient-to-b from-rose-50 via-rose-50/50 to-white shadow-lg shadow-rose-200/50 hover:shadow-rose-300/60 dark:border-rose-400/40 dark:from-rose-500/15 dark:via-rose-500/5 dark:to-transparent dark:shadow-rose-500/10 dark:hover:shadow-rose-500/20'
+               ? 'border-rose-300 bg-gradient-to-b from-rose-50 via-rose-50/50 to-white shadow-lg shadow-rose-200/50 hover:shadow-rose-300/60 dark:border-rose-400/40 dark:from-rose-500/15 dark:via-rose-500/5 dark:to-transparent dark:shadow-rose-500/10 dark:hover:shadow-rose-500/20'
                   : 'border-zinc-200 bg-white shadow-sm hover:border-zinc-300 hover:shadow-md dark:border-white/10 dark:bg-zinc-900/40 dark:shadow-none dark:hover:border-white/20'
               }`}
             >
               {tier.popular && (
-                <div className='absolute -top-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 rounded-full bg-gradient-to-r from-rose-500 to-amber-500 px-4 py-1.5 text- font-bold uppercase tracking-wide text-white shadow-lg shadow-rose-500/30 dark:text-zinc-900'>
-                  <Sparkles className='h-3.5 w-3.5' /> Most Popular
+                <div className='absolute -top-2.5 left-1/2 -translate-x-1/2 flex items-center gap-1 rounded-full bg-gradient-to-r from-rose-500 to-amber-500 px-3 py-1 text- font-bold uppercase tracking-wide text-white shadow-lg shadow-rose-500/30 dark:text-zinc-900 sm:-top-3 sm:px-4 sm:py-1.5 sm:text-'>
+                  <Sparkles className='h-3 w-3 sm:h-3.5 sm:w-3.5' /> Most Popular
                 </div>
               )}
 
               <div className='flex-1'>
-                <p className='text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400'>
+                <p className='text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 sm:text-sm'>
                   {tier.name}
                 </p>
-                <div className='mt-3 flex items-baseline gap-1'>
-                  <span className='text-3xl font-black tracking-tight text-zinc-900 dark:text-white lg:text-4xl'>
+                <div className='mt-2 flex items-baseline gap-1 sm:mt-3'>
+                  <span className='text-2xl font-black tracking-tight text-zinc-900 dark:text-white sm:text-3xl lg:text-4xl'>
                     {tier.price.split(' ')[1]}
                   </span>
-                  <span className='text-sm font-medium text-zinc-500'>
+                  <span className='text-xs font-medium text-zinc-500 sm:text-sm'>
                     {tier.price.split(' ')[0]}
                   </span>
                 </div>
@@ -251,34 +234,35 @@ const PricingSection = () => {
               <motion.button
                 onClick={() => setSelectedPackage(tier)}
                 whileTap={{ scale: 0.97 }}
-                className={`cursor-pointer mt-7 flex w-full items-center justify-center gap-2 rounded-xl py-3 text-sm font-semibold transition-all duration-200 ${
+                className={`mt-5 flex w-full items-center justify-center gap-2 rounded-xl py-2.5 text-xs font-semibold transition-all duration-200 sm:mt-7 sm:py-3 sm:text-sm ${
                   tier.popular
-                  ? 'bg-gradient-to-r from-rose-500 to-amber-500 text-white hover:shadow-lg hover:shadow-rose-500/25 dark:text-zinc-900'
+                 ? 'bg-gradient-to-r from-rose-500 to-amber-500 text-white hover:shadow-lg hover:shadow-rose-500/25 dark:text-zinc-900'
                     : 'bg-zinc-900 text-white hover:bg-zinc-700 dark:bg-white/10 dark:text-white dark:ring-1 dark:ring-inset dark:ring-white/10 dark:hover:bg-white/15 dark:hover:ring-white/20'
                 }`}
               >
-                <Check className='h-4 w-4' />
+                <Check className='h-3.5 w-3.5 sm:h-4 sm:w-4' />
                 Select Package
               </motion.button>
             </motion.div>
           ))}
         </motion.div>
 
+        {/* Notes */}
         <motion.div
           variants={fadeUp}
           custom={2}
-          className='mx-auto mt-16 grid max-w-4xl gap-4 text-sm md:grid-cols-2'
+          className='mx-auto mt-12 grid max-w-4xl gap-3 text-xs sm:mt-16 sm:gap-4 sm:text-sm md:grid-cols-2'
         >
-          <div className='rounded-2xl border border-amber-300 bg-amber-50 p-5 text-amber-900 dark:border-amber-400/20 dark:bg-gradient-to-br dark:from-amber-500/10 dark:to-transparent dark:text-amber-200/90'>
+          <div className='rounded-xl border border-amber-300 bg-amber-50 p-4 text-amber-900 dark:border-amber-400/20 dark:bg-gradient-to-br dark:from-amber-500/10 dark:to-transparent dark:text-amber-200/90 sm:rounded-2xl sm:p-5'>
             <span className='font-semibold text-amber-950 dark:text-amber-200'>Note:</span> Rates may differ for plus size. Engagement prices exclude kente fabric.
           </div>
-          <div className='rounded-2xl border border-zinc-200 bg-zinc-50 p-5 text-zinc-700 dark:border-white/10 dark:bg-zinc-900/40 dark:text-zinc-300'>
+          <div className='rounded-xl border border-zinc-200 bg-zinc-50 p-4 text-zinc-700 dark:border-white/10 dark:bg-zinc-900/40 dark:text-zinc-300 sm:rounded-2xl sm:p-5'>
             <span className='font-semibold text-zinc-900 dark:text-white'>Veil:</span> Plain cathedral GHS 500. Custom veil with borders GHS 1,500–2,500.
           </div>
         </motion.div>
       </motion.section>
 
-      {/* Modal */}
+      {/* Modal - Mobile first */}
       <AnimatePresence>
         {selectedPackage && (
           <>
@@ -291,44 +275,44 @@ const PricingSection = () => {
             />
 
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              transition={{ type: 'spring', bounce: 0.2, duration: 0.4 }}
-              className='fixed left-1/2 top-1/2 z-50 w-[calc(100%-2rem)] max-w-2xl -translate-x-1/2 -translate-y-1/2'
+              initial={{ opacity: 0, y: '100%' }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: '100%' }}
+              transition={{ type: 'spring', bounce: 0.15, duration: 0.5 }}
+              className='fixed inset-x-0 bottom-0 z-50 sm:inset-auto sm:left-1/2 sm:top-1/2 sm:w-[calc(100%-2rem)] sm:max-w-2xl sm:-translate-x-1/2 sm:-translate-y-1/2'
             >
-              <div className='max-h- overflow-y-auto rounded-3xl border border-zinc-200 bg-white shadow-2xl dark:border-white/10 dark:bg-zinc-900'>
+              <div className='max-h- overflow-y-auto rounded-t-3xl border border-zinc-200 bg-white shadow-2xl dark:border-white/10 dark:bg-zinc-900 sm:max-h- sm:rounded-3xl'>
 
                 {/* Step 1: Info + Images */}
                 {step === 'info' && (
-                  <div className='p-8'>
-                    <div className='flex items-start justify-between'>
+                  <div className='p-5 sm:p-8'>
+                    <div className='flex items-start justify-between gap-3'>
                       <div className='flex items-start gap-3'>
-                        <div className='flex h-12 w-12 items-center justify-center rounded-xl bg-rose-100 text-rose-600 dark:bg-rose-500/10 dark:text-rose-300'>
-                          <Package className='h-6 w-6' />
+                        <div className='flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-rose-100 text-rose-600 dark:bg-rose-500/10 dark:text-rose-300 sm:h-12 sm:w-12'>
+                          <Package className='h-5 w-5 sm:h-6 sm:w-6' />
                         </div>
                         <div>
-                          <h3 className='text-2xl font-bold text-zinc-900 dark:text-white'>
+                          <h3 className='text-xl font-bold text-zinc-900 dark:text-white sm:text-2xl'>
                             {selectedPackage.name}
                           </h3>
-                          <p className='mt-1 text-sm font-semibold text-rose-600 dark:text-rose-400'>
+                          <p className='mt-0.5 text-sm font-semibold text-rose-600 dark:text-rose-400'>
                             {selectedPackage.price}
                           </p>
                         </div>
                       </div>
                       <button
                         onClick={closeModal}
-                        className='rounded-lg p-2 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-white'
+                        className='-mr-2 -mt-2 rounded-lg p-2 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-white'
                       >
                         <X className='h-5 w-5' />
                       </button>
                     </div>
 
-                    {/* Image area - drop your images here */}
-                    <div className='mt-6'>
+                    {/* Image gallery */}
+                    <div className='mt-5 sm:mt-6'>
                       {selectedPackage.images?.length > 0? (
                         <>
-                          <div className='aspect-[4/3] overflow-hidden rounded-2xl bg-zinc-100 dark:bg-white/5'>
+                          <div className='aspect-[4/3] overflow-hidden rounded-xl bg-zinc-100 dark:bg-white/5 sm:rounded-2xl'>
                             <img
                               src={selectedPackage.images[activeImgIdx]}
                               alt={selectedPackage.name}
@@ -341,9 +325,9 @@ const PricingSection = () => {
                                 <button
                                   key={idx}
                                   onClick={() => setActiveImgIdx(idx)}
-                                  className={`h-16 w-16 shrink-0 overflow-hidden rounded-lg border-2 ${
+                                  className={`h-14 w-14 shrink-0 overflow-hidden rounded-lg border-2 sm:h-16 sm:w-16 ${
                                     activeImgIdx === idx
-                                   ? 'border-rose-500'
+                                  ? 'border-rose-500'
                                     : 'border-transparent opacity-60 hover:opacity-100'
                                   }`}
                                 >
@@ -354,35 +338,35 @@ const PricingSection = () => {
                           )}
                         </>
                       ) : (
-                        <div className='flex aspect-[4/3] flex-col items-center justify-center rounded-2xl border-2 border-dashed border-zinc-300 bg-zinc-50 text-zinc-400 dark:border-white/10 dark:bg-white/5 dark:text-zinc-500'>
-                          <ImageIcon className='h-10 w-10' />
-                          <p className='mt-2 text-sm'>Drop package images here</p>
+                        <div className='flex aspect-[4/3] flex-col items-center justify-center rounded-xl border-2 border-dashed border-zinc-300 bg-zinc-50 text-zinc-400 dark:border-white/10 dark:bg-white/5 dark:text-zinc-500 sm:rounded-2xl'>
+                          <ImageIcon className='h-8 w-8 sm:h-10 sm:w-10' />
+                          <p className='mt-2 text-xs sm:text-sm'>Add package images</p>
                         </div>
                       )}
                     </div>
 
-                    <div className='mt-6 rounded-2xl border border-zinc-200 bg-zinc-50 p-5 text-sm leading-relaxed text-zinc-700 dark:border-white/10 dark:bg-white/5 dark:text-zinc-300'>
+                    <div className='mt-5 rounded-xl border border-zinc-200 bg-zinc-50 p-4 text-sm leading-relaxed text-zinc-700 dark:border-white/10 dark:bg-white/5 dark:text-zinc-300 sm:mt-6 sm:rounded-2xl sm:p-5'>
                       {selectedPackage.desc}
                     </div>
 
-                    <div className='mt-6 grid grid-cols-3 gap-3 text-center text-xs'>
-                      <div className='rounded-xl border border-zinc-200 bg-white p-3 dark:border-white/10 dark:bg-white/5'>
+                    <div className='mt-5 grid grid-cols-3 gap-2 text-center text-xs sm:mt-6 sm:gap-3 sm:text-sm'>
+                      <div className='rounded-lg border border-zinc-200 bg-white p-2.5 dark:border-white/10 dark:bg-white/5 sm:rounded-xl sm:p-3'>
                         <p className='font-semibold text-zinc-900 dark:text-white'>3-8</p>
-                        <p className='mt-1 text-zinc-500 dark:text-zinc-400'>Fittings</p>
+                        <p className='mt-0.5 text-zinc-500 dark:text-zinc-400'>Fittings</p>
                       </div>
-                      <div className='rounded-xl border border-zinc-200 bg-white p-3 dark:border-white/10 dark:bg-white/5'>
+                      <div className='rounded-lg border border-zinc-200 bg-white p-2.5 dark:border-white/10 dark:bg-white/5 sm:rounded-xl sm:p-3'>
                         <p className='font-semibold text-zinc-900 dark:text-white'>3-6mo</p>
-                        <p className='mt-1 text-zinc-500 dark:text-zinc-400'>Lead Time</p>
+                        <p className='mt-0.5 text-zinc-500 dark:text-zinc-400'>Lead Time</p>
                       </div>
-                      <div className='rounded-xl border border-zinc-200 bg-white p-3 dark:border-white/10 dark:bg-white/5'>
+                      <div className='rounded-lg border border-zinc-200 bg-white p-2.5 dark:border-white/10 dark:bg-white/5 sm:rounded-xl sm:p-3'>
                         <p className='font-semibold text-zinc-900 dark:text-white'>Custom</p>
-                        <p className='mt-1 text-zinc-500 dark:text-zinc-400'>Fit</p>
+                        <p className='mt-0.5 text-zinc-500 dark:text-zinc-400'>Fit</p>
                       </div>
                     </div>
 
                     <button
                       onClick={handlePlaceOrder}
-                      className='mt-8 w-full rounded-xl bg-gradient-to-r from-rose-500 to-amber-500 py-3 text-sm font-semibold text-white hover:scale-[1.02] active:scale-[0.98] dark:text-zinc-900'
+                      className='mt-6 w-full rounded-xl bg-gradient-to-r from-rose-500 to-amber-500 py-3 text-sm font-semibold text-white active:scale-[0.98] dark:text-zinc-900 sm:mt-8'
                     >
                       Place Order — {selectedPackage.price}
                     </button>
@@ -391,35 +375,34 @@ const PricingSection = () => {
 
                 {/* Step 2: Checkout */}
                 {step === 'checkout' && (
-                  <div className='p-8'>
-                    <div className='flex items-start justify-between'>
-                      <div className='flex items-center gap-3'>
+                  <div className='p-5 sm:p-8'>
+                    <div className='flex items-start justify-between gap-3'>
+                      <div className='flex items-center gap-2 sm:gap-3'>
                         <button
                           onClick={() => setStep('info')}
-                          className='rounded-lg p-2 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-white'
+                          className='-ml-2 rounded-lg p-2 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-white'
                         >
                           <ArrowLeft className='h-5 w-5' />
                         </button>
                         <div>
-                          <h3 className='text-2xl font-bold text-zinc-900 dark:text-white'>
+                          <h3 className='text-xl font-bold text-zinc-900 dark:text-white sm:text-2xl'>
                             Confirm Order
                           </h3>
-                          <p className='mt-1 text-sm text-zinc-600 dark:text-zinc-400'>
+                          <p className='mt-0.5 text-xs text-zinc-600 dark:text-zinc-400 sm:text-sm'>
                             {selectedPackage.name}
                           </p>
                         </div>
-                      </div>
                       <button
                         onClick={closeModal}
-                        className='rounded-lg p-2 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-white'
+                        className='-mr-2 -mt-2 rounded-lg p-2 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-white'
                       >
                         <X className='h-5 w-5' />
                       </button>
                     </div>
 
-                    <form onSubmit={handleCheckout} className='mt-6 space-y-4'>
+                    <form onSubmit={handleCheckout} className='mt-5 space-y-3 sm:mt-6 sm:space-y-4'>
                       <div>
-                        <label className='mb-2 block text-sm font-medium text-zinc-700 dark:text-zinc-300'>
+                        <label className='mb-1.5 block text-xs font-medium text-zinc-700 dark:text-zinc-300 sm:mb-2 sm:text-sm'>
                           Full Name
                         </label>
                         <input
@@ -427,13 +410,13 @@ const PricingSection = () => {
                           required
                           value={clientData.name}
                           onChange={(e) => updateField('name', e.target.value)}
-                          className='w-full rounded-xl border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 placeholder:text-zinc-400 outline-none focus:border-rose-500 focus:ring-4 focus:ring-rose-500/10 dark:border-white/10 dark:bg-black/20 dark:text-white'
+                          className='w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-900 placeholder:text-zinc-400 outline-none focus:border-rose-500 focus:ring-4 focus:ring-rose-500/10 dark:border-white/10 dark:bg-black/20 dark:text-white sm:px-4 sm:py-3'
                           placeholder='Enter your name'
                         />
                       </div>
 
                       <div>
-                        <label className='mb-2 block text-sm font-medium text-zinc-700 dark:text-zinc-300'>
+                        <label className='mb-1.5 block text-xs font-medium text-zinc-700 dark:text-zinc-300 sm:mb-2 sm:text-sm'>
                           Email
                         </label>
                         <input
@@ -441,13 +424,13 @@ const PricingSection = () => {
                           required
                           value={clientData.email}
                           onChange={(e) => updateField('email', e.target.value)}
-                          className='w-full rounded-xl border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 placeholder:text-zinc-400 outline-none focus:border-rose-500 focus:ring-4 focus:ring-rose-500/10 dark:border-white/10 dark:bg-black/20 dark:text-white'
+                          className='w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-900 placeholder:text-zinc-400 outline-none focus:border-rose-500 focus:ring-4 focus:ring-rose-500/10 dark:border-white/10 dark:bg-black/20 dark:text-white sm:px-4 sm:py-3'
                           placeholder='your@email.com'
                         />
                       </div>
 
                       <div>
-                        <label className='mb-2 block text-sm font-medium text-zinc-700 dark:text-zinc-300'>
+                        <label className='mb-1.5 block text-xs font-medium text-zinc-700 dark:text-zinc-300 sm:mb-2 sm:text-sm'>
                           Phone
                         </label>
                         <input
@@ -455,59 +438,59 @@ const PricingSection = () => {
                           required
                           value={clientData.phone}
                           onChange={(e) => updateField('phone', e.target.value)}
-                          className='w-full rounded-xl border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 outline-none focus:border-rose-500 focus:ring-4 focus:ring-rose-500/10 dark:border-white/10 dark:bg-black/20 dark:text-white'
+                          className='w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-900 outline-none focus:border-rose-500 focus:ring-4 focus:ring-rose-500/10 dark:border-white/10 dark:bg-black/20 dark:text-white sm:px-4 sm:py-3'
                           placeholder='+233...'
                         />
                       </div>
 
-                      <div className='rounded-2xl border border-zinc-200 bg-zinc-50 p-4 dark:border-white/10 dark:bg-white/5'>
-                        <div className='flex justify-between text-sm'>
+                      <div className='rounded-xl border border-zinc-200 bg-zinc-50 p-3 dark:border-white/10 dark:bg-white/5 sm:rounded-2xl sm:p-4'>
+                        <div className='flex justify-between text-xs sm:text-sm'>
                           <span className='text-zinc-600 dark:text-zinc-400'>Subtotal</span>
                           <span className='font-semibold text-zinc-900 dark:text-white'>{selectedPackage.price}</span>
                         </div>
-                        <div className='mt-2 flex justify-between border-t border-zinc-200 pt-2 text-sm dark:border-white/10'>
+                        <div className='mt-2 flex justify-between border-t border-zinc-200 pt-2 text-xs dark:border-white/10 sm:text-sm'>
                           <span className='font-semibold text-zinc-900 dark:text-white'>Total</span>
                           <span className='font-bold text-rose-600 dark:text-rose-400'>{selectedPackage.price}</span>
                         </div>
                       </div>
 
-                      <div className='rounded-2xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900 dark:border-amber-400/20 dark:bg-amber-500/10 dark:text-amber-200'>
+                      <div className='rounded-xl border border-amber-300 bg-amber-50 p-3 text-xs text-amber-900 dark:border-amber-400/20 dark:bg-amber-500/10 dark:text-amber-200 sm:rounded-2xl sm:p-4 sm:text-sm'>
                         <div className='flex gap-2'>
-                          <CreditCard className='h-5 w-5 shrink-0' />
+                          <CreditCard className='h-4 w-4 shrink-0 sm:h-5 sm:w-5' />
                           <p>Clicking “Pay Now” will initialize Paystack. Complete payment securely with card or mobile money.</p>
                         </div>
                       </div>
 
                       <button
                         type='submit'
-                        className='w-full rounded-xl bg-gradient-to-r from-rose-500 to-amber-500 py-3 text-sm font-semibold text-white hover:scale-[1.02] active:scale-[0.98] dark:text-zinc-900'
+                        className='w-full rounded-xl bg-gradient-to-r from-rose-500 to-amber-500 py-3 text-sm font-semibold text-white active:scale-[0.98] dark:text-zinc-900'
                       >
                         Pay {selectedPackage.price} with Paystack
                       </button>
                     </form>
                   </div>
-                )}
+                )
 
                 {/* Step 3: Success */}
                 {step === 'success' && (
-                  <div className='p-8 text-center'>
+                  <div className='p-5 text-center sm:p-8'>
                     <motion.div
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
                       transition={{ type: 'spring', bounce: 0.5 }}
-                      className='mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 dark:bg-emerald-500/10'
+                      className='mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100 dark:bg-emerald-500/10 sm:h-16 sm:w-16'
                     >
-                      <CheckCircle2 className='h-8 w-8 text-emerald-600 dark:text-emerald-400' />
+                      <CheckCircle2 className='h-7 w-7 text-emerald-600 dark:text-emerald-400 sm:h-8 sm:w-8' />
                     </motion.div>
 
-                    <h3 className='mt-6 text-2xl font-bold text-zinc-900 dark:text-white'>
+                    <h3 className='mt-5 text-xl font-bold text-zinc-900 dark:text-white sm:mt-6 sm:text-2xl'>
                       Order Confirmed!
                     </h3>
-                    <p className='mt-2 text-balance text-sm text-zinc-600 dark:text-zinc-400'>
+                    <p className='mt-2 text-balance text-xs text-zinc-600 dark:text-zinc-400 sm:text-sm'>
                       Payment successful. We’ve sent your receipt to <span className='font-semibold text-zinc-900 dark:text-white'>{clientData.email}</span>.
                     </p>
 
-                    <div className='mt-6 rounded-2xl border border-zinc-200 bg-zinc-50 p-4 text-left text-sm dark:border-white/10 dark:bg-white/5'>
+                    <div className='mt-5 rounded-xl border border-zinc-200 bg-zinc-50 p-3 text-left text-xs dark:border-white/10 dark:bg-white/5 sm:mt-6 sm:rounded-2xl sm:p-4 sm:text-sm'>
                       <div className='flex justify-between'>
                         <span className='text-zinc-600 dark:text-zinc-400'>Package</span>
                         <span className='font-medium text-zinc-900 dark:text-white'>{selectedPackage.name}</span>
@@ -524,13 +507,16 @@ const PricingSection = () => {
 
                     <button
                       onClick={closeModal}
-                      className='mt-8 w-full rounded-xl border border-zinc-300 bg-white py-3 text-sm font-semibold text-zinc-700 hover:bg-zinc-50 dark:border-white/10 dark:bg-white/5 dark:text-zinc-300 dark:hover:bg-white/10'
+                      className='mt-6 w-full rounded-xl border border-zinc-300 bg-white py-3 text-sm font-semibold text-zinc-700 hover:bg-zinc-50 dark:border-white/10 dark:bg-white/5 dark:text-zinc-300 dark:hover:bg-white/10 sm:mt-8'
                     >
                       Back to Page
                     </button>
                   </div>
                 )}
               </div>
+              )}
+              </div>
+              
             </motion.div>
           </>
         )}

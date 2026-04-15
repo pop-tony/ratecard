@@ -30,22 +30,22 @@ const TermsSection = () => {
       whileInView='visible'
       viewport={{ once: true }}
       transition={{ staggerChildren: 0.1 }}
-      className='m-3 mx-auto max-w-4xl bg-white px-6 py-24 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 print:bg-white print:text-black'
+      className='mx-auto max-w-4xl bg-white px-4 py-16 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 print:bg-white print:text-black sm:px-6 sm:py-24'
     >
-      <motion.h2 variants={fadeUp} className='mb-8 text-3xl font-bold text-zinc-900 dark:text-white md:text-4xl print:text-black'>
+      <motion.h2 variants={fadeUp} className='mb-6 text-2xl font-bold text-zinc-900 dark:text-white sm:mb-8 sm:text-3xl md:text-4xl print:text-black'>
         Terms & Conditions
       </motion.h2>
-      <div className='space-y-4'>
+      <div className='space-y-3 sm:space-y-4'>
         {terms.map((term, i) => (
           <motion.div
             key={i}
             variants={fadeUp}
-            className='rounded-2xl border border-zinc-200 bg-zinc-50 p-6 dark:border-white/10 dark:bg-white/5 print:border-gray-300 print:bg-white print:shadow-none'
+            className='rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-white/10 dark:bg-white/5 print:border-gray-300 print:bg-white print:shadow-none sm:rounded-2xl sm:p-6'
           >
-            <h3 className='mb-2 font-semibold text-zinc-900 dark:text-white print:text-black'>
+            <h3 className='mb-2 text-sm font-semibold text-zinc-900 dark:text-white print:text-black sm:text-base'>
               {term.title}
             </h3>
-            <p className='text-sm leading-relaxed text-zinc-600 dark:text-zinc-400 print:text-gray-700'>
+            <p className='text-xs leading-relaxed text-zinc-600 dark:text-zinc-400 print:text-gray-700 sm:text-sm'>
               {term.content}
             </p>
           </motion.div>

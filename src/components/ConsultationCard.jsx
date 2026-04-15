@@ -21,7 +21,6 @@ const ConsultationCard = () => {
     { icon: <Scissors className='h-5 w-5' />, title: 'Mock-ups', desc: 'Style inspiration mock-ups charged separately. Price set by designer after consultation' },
   ]
 
-  // Close modal on ESC + lock body scroll
   useEffect(() => {
     const handleEsc = (e) => e.key === 'Escape' && closeModal()
     if (isModalOpen) {
@@ -38,7 +37,7 @@ const ConsultationCard = () => {
 
   const closeModal = () => {
     setIsModalOpen(false)
-    setTimeout(() => setStep('details'), 300) // reset after animation
+    setTimeout(() => setStep('details'), 300)
   }
 
   const handleDetailsSubmit = (e) => {
@@ -49,10 +48,6 @@ const ConsultationCard = () => {
   const handlePaymentSubmit = (e) => {
     e.preventDefault()
     // YOU HANDLE PAYSTACK HERE
-    // Example: paystackInit({ email: formData.email, amount: 80000 })
-    //.then(() => setStep('success'))
-
-    // For now just simulate success
     setTimeout(() => setStep('success'), 800)
   }
 
@@ -68,24 +63,24 @@ const ConsultationCard = () => {
         whileInView='visible'
         viewport={{ once: true }}
         transition={{ staggerChildren: 0.1 }}
-        className='m-3 mx-auto max-w-4xl bg-white px-6 py-24 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100'
+        className='mx-auto max-w-4xl bg-white px-4 py-16 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 sm:px-6 sm:py-24'
       >
         <motion.div
           variants={fadeUp}
-          className='rounded-3xl border border-zinc-200 bg-white p-8 shadow-sm dark:border-white/10 dark:bg-white/5 dark:shadow-none md:p-12'
+          className='rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-white/10 dark:bg-white/5 dark:shadow-none sm:rounded-3xl sm:p-8 md:p-12'
         >
-          <h2 className='mb-8 text-3xl font-bold text-zinc-900 dark:text-white md:text-4xl'>
+          <h2 className='mb-6 text-2xl font-bold text-zinc-900 dark:text-white sm:mb-8 sm:text-3xl md:text-4xl'>
             Before You Book
           </h2>
-          <div className='space-y-6'>
+          <div className='space-y-5 sm:space-y-6'>
             {details.map((item, i) => (
-              <motion.div key={i} variants={fadeUp} className='flex gap-4'>
-                <div className='flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-rose-100 text-rose-600 dark:bg-rose-500/10 dark:text-rose-300'>
+              <motion.div key={i} variants={fadeUp} className='flex gap-3 sm:gap-4'>
+                <div className='flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-rose-100 text-rose-600 dark:bg-rose-500/10 dark:text-rose-300 sm:h-10 sm:w-10'>
                   {item.icon}
                 </div>
                 <div>
-                  <h3 className='font-semibold text-zinc-900 dark:text-white'>{item.title}</h3>
-                  <p className='mt-1 text-sm text-zinc-600 dark:text-zinc-400'>{item.desc}</p>
+                  <h3 className='text-sm font-semibold text-zinc-900 dark:text-white sm:text-base'>{item.title}</h3>
+                  <p className='mt-1 text-xs text-zinc-600 dark:text-zinc-400 sm:text-sm'>{item.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -95,7 +90,7 @@ const ConsultationCard = () => {
             variants={fadeUp}
             onClick={() => setIsModalOpen(true)}
             whileTap={{ scale: 0.97 }}
-            className='mt-10 flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-rose-500 to-amber-500 py-3 text-sm font-semibold text-white transition-transform hover:scale-[1.01] dark:text-zinc-900 md:w-auto md:px-8'
+            className='mt-8 flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-rose-500 to-amber-500 py-3 text-sm font-semibold text-white transition-transform active:scale-[0.98] dark:text-zinc-900 sm:mt-10 md:w-auto md:px-8'
           >
             <CalendarCheck className='h-4 w-4' />
             Book Consultation
@@ -103,7 +98,7 @@ const ConsultationCard = () => {
         </motion.div>
       </motion.section>
 
-      {/* Modal */}
+      {/* Modal - bottom sheet on mobile, centered on desktop */}
       <AnimatePresence>
         {isModalOpen && (
           <>
@@ -116,37 +111,37 @@ const ConsultationCard = () => {
             />
 
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              transition={{ type: 'spring', bounce: 0.2, duration: 0.4 }}
-              className='fixed left-1/2 top-1/2 z-50 w-[calc(100%-2rem)] max-w-lg -translate-x-1/2 -translate-y-1/2'
+              initial={{ opacity: 0, y: '100%' }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: '100%' }}
+              transition={{ type: 'spring', bounce: 0.15, duration: 0.5 }}
+              className='fixed inset-x-0 bottom-0 z-50 sm:inset-auto sm:left-1/2 sm:top-1/2 sm:w-[calc(100%-2rem)] sm:max-w-lg sm:-translate-x-1/2 sm:-translate-y-1/2'
             >
-              <div className='rounded-3xl border border-zinc-200 bg-white p-8 shadow-2xl dark:border-white/10 dark:bg-zinc-900'>
+              <div className='max-h- overflow-y-auto rounded-t-3xl border border-zinc-200 bg-white shadow-2xl dark:border-white/10 dark:bg-zinc-900 sm:max-h- sm:rounded-3xl'>
 
                 {/* Step 1: Details */}
                 {step === 'details' && (
-                  <>
-                    <div className='flex items-start justify-between'>
+                  <div className='p-5 sm:p-8'>
+                    <div className='flex items-start justify-between gap-3'>
                       <div>
-                        <h3 className='text-2xl font-bold text-zinc-900 dark:text-white'>
+                        <h3 className='text-xl font-bold text-zinc-900 dark:text-white sm:text-2xl'>
                           Book Your Consultation
                         </h3>
-                        <p className='mt-1 text-sm text-zinc-600 dark:text-zinc-400'>
+                        <p className='mt-1 text-xs text-zinc-600 dark:text-zinc-400 sm:text-sm'>
                           GHS 800 • 30 minutes with lead designer
                         </p>
                       </div>
                       <button
                         onClick={closeModal}
-                        className='rounded-lg p-2 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-white'
+                        className='-mr-2 -mt-2 rounded-lg p-2 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-white'
                       >
                         <X className='h-5 w-5' />
                       </button>
                     </div>
 
-                    <form onSubmit={handleDetailsSubmit} className='mt-6 space-y-4'>
+                    <form onSubmit={handleDetailsSubmit} className='mt-5 space-y-3 sm:mt-6 sm:space-y-4'>
                       <div>
-                        <label className='mb-2 block text-sm font-medium text-zinc-700 dark:text-zinc-300'>
+                        <label className='mb-1.5 block text-xs font-medium text-zinc-700 dark:text-zinc-300 sm:mb-2 sm:text-sm'>
                           Full Name
                         </label>
                         <input
@@ -154,13 +149,13 @@ const ConsultationCard = () => {
                           required
                           value={formData.name}
                           onChange={(e) => updateField('name', e.target.value)}
-                          className='w-full rounded-xl border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 placeholder:text-zinc-400 outline-none focus:border-rose-500 focus:ring-4 focus:ring-rose-500/10 dark:border-white/10 dark:bg-black/20 dark:text-white'
+                          className='w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-900 placeholder:text-zinc-400 outline-none focus:border-rose-500 focus:ring-4 focus:ring-rose-500/10 dark:border-white/10 dark:bg-black/20 dark:text-white sm:px-4 sm:py-3'
                           placeholder='Enter your name'
                         />
                       </div>
 
                       <div>
-                        <label className='mb-2 block text-sm font-medium text-zinc-700 dark:text-zinc-300'>
+                        <label className='mb-1.5 block text-xs font-medium text-zinc-700 dark:text-zinc-300 sm:mb-2 sm:text-sm'>
                           Email
                         </label>
                         <input
@@ -168,14 +163,15 @@ const ConsultationCard = () => {
                           required
                           value={formData.email}
                           onChange={(e) => updateField('email', e.target.value)}
-                          className='w-full rounded-xl border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 placeholder:text-zinc-400 outline-none focus:border-rose-500 focus:ring-4 focus:ring-rose-500/10 dark:border-white/10 dark:bg-black/20 dark:text-white'
+                          className='w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-900 placeholder:text-zinc-400 outline-none focus:border-rose-500 focus:ring-4 focus:ring-rose-500/10 dark:border-white/10 dark:bg-black/20 dark:text-white sm:px-4 sm:py-3'
                           placeholder='your@email.com'
                         />
                       </div>
 
-                      <div className='grid grid-cols-2 gap-4'>
+                      {/* Stack on mobile, 2-col on sm+ */}
+                      <div className='grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4'>
                         <div>
-                          <label className='mb-2 block text-sm font-medium text-zinc-700 dark:text-zinc-300'>
+                          <label className='mb-1.5 block text-xs font-medium text-zinc-700 dark:text-zinc-300 sm:mb-2 sm:text-sm'>
                             Phone
                           </label>
                           <input
@@ -183,12 +179,12 @@ const ConsultationCard = () => {
                             required
                             value={formData.phone}
                             onChange={(e) => updateField('phone', e.target.value)}
-                            className='w-full rounded-xl border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 outline-none focus:border-rose-500 focus:ring-4 focus:ring-rose-500/10 dark:border-white/10 dark:bg-black/20 dark:text-white'
+                            className='w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-900 outline-none focus:border-rose-500 focus:ring-4 focus:ring-rose-500/10 dark:border-white/10 dark:bg-black/20 dark:text-white sm:px-4 sm:py-3'
                             placeholder='+233...'
                           />
                         </div>
                         <div>
-                          <label className='mb-2 block text-sm font-medium text-zinc-700 dark:text-zinc-300'>
+                          <label className='mb-1.5 block text-xs font-medium text-zinc-700 dark:text-zinc-300 sm:mb-2 sm:text-sm'>
                             Preferred Date
                           </label>
                           <input
@@ -196,99 +192,99 @@ const ConsultationCard = () => {
                             required
                             value={formData.date}
                             onChange={(e) => updateField('date', e.target.value)}
-                            className='w-full rounded-xl border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 outline-none focus:border-rose-500 focus:ring-4 focus:ring-rose-500/10 dark:border-white/10 dark:bg-black/20 dark:text-white dark:[color-scheme:dark]'
+                            className='w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-900 outline-none focus:border-rose-500 focus:ring-4 focus:ring-rose-500/10 dark:border-white/10 dark:bg-black/20 dark:text-white dark:[color-scheme:dark] sm:px-4 sm:py-3'
                           />
                         </div>
                       </div>
 
                       <button
                         type='submit'
-                        className='mt-2 w-full rounded-xl bg-gradient-to-r from-rose-500 to-amber-500 py-3 text-sm font-semibold text-white hover:scale-[1.02] active:scale-[0.98] dark:text-zinc-900'
+                        className='mt-2 w-full rounded-xl bg-gradient-to-r from-rose-500 to-amber-500 py-3 text-sm font-semibold text-white active:scale-[0.98] dark:text-zinc-900'
                       >
                         Continue to Payment
                       </button>
                     </form>
-                  </>
+                  </div>
                 )}
 
                 {/* Step 2: Payment */}
                 {step === 'payment' && (
-                  <>
-                    <div className='flex items-start justify-between'>
-                      <div className='flex items-center gap-3'>
+                  <div className='p-5 sm:p-8'>
+                    <div className='flex items-start justify-between gap-3'>
+                      <div className='flex items-center gap-2 sm:gap-3'>
                         <button
                           onClick={() => setStep('details')}
-                          className='rounded-lg p-2 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-white'
+                          className='-ml-2 rounded-lg p-2 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-white'
                         >
                           <ArrowLeft className='h-5 w-5' />
                         </button>
                         <div>
-                          <h3 className='text-2xl font-bold text-zinc-900 dark:text-white'>
+                          <h3 className='text-xl font-bold text-zinc-900 dark:text-white sm:text-2xl'>
                             Checkout
                           </h3>
-                          <p className='mt-1 text-sm text-zinc-600 dark:text-zinc-400'>
+                          <p className='mt-0.5 text-xs text-zinc-600 dark:text-zinc-400 sm:mt-1 sm:text-sm'>
                             Pay GHS 800 to confirm your slot
                           </p>
                         </div>
                       </div>
                       <button
                         onClick={closeModal}
-                        className='rounded-lg p-2 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-white'
+                        className='-mr-2 -mt-2 rounded-lg p-2 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-white'
                       >
                         <X className='h-5 w-5' />
                       </button>
                     </div>
 
-                    <div className='mt-6 rounded-2xl border border-zinc-200 bg-zinc-50 p-5 dark:border-white/10 dark:bg-white/5'>
-                      <div className='flex justify-between text-sm'>
+                    <div className='mt-5 rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-white/10 dark:bg-white/5 sm:mt-6 sm:rounded-2xl sm:p-5'>
+                      <div className='flex justify-between text-xs sm:text-sm'>
                         <span className='text-zinc-600 dark:text-zinc-400'>Consultation Fee</span>
                         <span className='font-semibold text-zinc-900 dark:text-white'>GHS 800.00</span>
                       </div>
-                      <div className='mt-2 flex justify-between text-sm'>
+                      <div className='mt-2 flex justify-between text-xs sm:text-sm'>
                         <span className='text-zinc-600 dark:text-zinc-400'>For</span>
                         <span className='font-medium text-zinc-900 dark:text-white'>{formData.name}</span>
                       </div>
                     </div>
 
-                    <form onSubmit={handlePaymentSubmit} className='mt-6'>
-                      <div className='rounded-2xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900 dark:border-amber-400/20 dark:bg-amber-500/10 dark:text-amber-200'>
+                    <form onSubmit={handlePaymentSubmit} className='mt-5 sm:mt-6'>
+                      <div className='rounded-xl border border-amber-300 bg-amber-50 p-3 text-xs text-amber-900 dark:border-amber-400/20 dark:bg-amber-500/10 dark:text-amber-200 sm:rounded-2xl sm:p-4 sm:text-sm'>
                         <div className='flex gap-2'>
-                          <CreditCard className='h-5 w-5 shrink-0' />
+                          <CreditCard className='h-4 w-4 shrink-0 sm:h-5 sm:w-5' />
                           <p>Clicking “Pay Now” will initialize Paystack. You’ll be redirected to complete payment securely.</p>
                         </div>
                       </div>
 
                       <button
                         type='submit'
-                        className='mt-6 w-full rounded-xl bg-gradient-to-r from-rose-500 to-amber-500 py-3 text-sm font-semibold text-white hover:scale-[1.02] active:scale-[0.98] dark:text-zinc-900'
+                        className='mt-5 w-full rounded-xl bg-gradient-to-r from-rose-500 to-amber-500 py-3 text-sm font-semibold text-white active:scale-[0.98] dark:text-zinc-900 sm:mt-6'
                       >
                         Pay GHS 800 with Paystack
                       </button>
                     </form>
-                  </>
+                  </div>
                 )}
 
                 {/* Step 3: Success */}
                 {step === 'success' && (
-                  <div className='text-center'>
+                  <div className='p-5 text-center sm:p-8'>
                     <motion.div
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
                       transition={{ type: 'spring', bounce: 0.5 }}
-                      className='mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 dark:bg-emerald-500/10'
+                      className='mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100 dark:bg-emerald-500/10 sm:h-16 sm:w-16'
                     >
-                      <CheckCircle2 className='h-8 w-8 text-emerald-600 dark:text-emerald-400' />
+                      <CheckCircle2 className='h-7 w-7 text-emerald-600 dark:text-emerald-400 sm:h-8 sm:w-8' />
                     </motion.div>
 
-                    <h3 className='mt-6 text-2xl font-bold text-zinc-900 dark:text-white'>
+                    <h3 className='mt-5 text-xl font-bold text-zinc-900 dark:text-white sm:mt-6 sm:text-2xl'>
                       Booking Confirmed!
                     </h3>
-                    <p className='mt-2 text-balance text-sm text-zinc-600 dark:text-zinc-400'>
+                    <p className='mt-2 text-balance text-xs text-zinc-600 dark:text-zinc-400 sm:text-sm'>
                       We’ve sent confirmation details to <span className='font-semibold text-zinc-900 dark:text-white'>{formData.email}</span>.
                       Our team will reach out within 24 hours to finalize your session.
                     </p>
 
-                    <div className='mt-6 rounded-2xl border border-zinc-200 bg-zinc-50 p-4 text-left text-sm dark:border-white/10 dark:bg-white/5'>
+                    <div className='mt-5 rounded-xl border border-zinc-200 bg-zinc-50 p-3 text-left text-xs dark:border-white/10 dark:bg-white/5 sm:mt-6 sm:rounded-2xl sm:p-4 sm:text-sm'>
                       <div className='flex justify-between'>
                         <span className='text-zinc-600 dark:text-zinc-400'>Name</span>
                         <span className='font-medium text-zinc-900 dark:text-white'>{formData.name}</span>
@@ -305,7 +301,7 @@ const ConsultationCard = () => {
 
                     <button
                       onClick={closeModal}
-                      className='mt-8 w-full rounded-xl border border-zinc-300 bg-white py-3 text-sm font-semibold text-zinc-700 hover:bg-zinc-50 dark:border-white/10 dark:bg-white/5 dark:text-zinc-300 dark:hover:bg-white/10'
+                      className='mt-6 w-full rounded-xl border border-zinc-300 bg-white py-3 text-sm font-semibold text-zinc-700 hover:bg-zinc-50 dark:border-white/10 dark:bg-white/5 dark:text-zinc-300 dark:hover:bg-white/10 sm:mt-8'
                     >
                       Back to Page
                     </button>
