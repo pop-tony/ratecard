@@ -58,6 +58,23 @@ const PRICING_DATA = {
       desc: 'Bespoke ball gown with hand-draped bodice, 3D florals, and chapel train. 8 fittings.',
       images: []
     },
+    { id: 11, name: 'Luxe Wedding Gown', price: 'GHS 17,000 - GHS 25,000', popular: false,
+      desc: 'Bespoke ball gown with hand-draped bodice, 3D florals, and chapel train. 8 fittings.',
+      images: []
+    },
+    { id: 12, name: 'Deluxe Wedding Gown', price: 'GHS 25,000 - GHS 35,000', popular: false,
+      desc: 'Bespoke ball gown with hand-draped bodice, 3D florals, and chapel train. 8 fittings.',
+      images: []
+    },
+    { id: 13, name: 'Classic Lace Gown', price: 'GHS 14,000 - GHS 17,000', popular: false,
+      desc: 'Bespoke ball gown with hand-draped bodice, 3D florals, and chapel train. 8 fittings.',
+      images: []
+    },
+    { id: 14, name: 'Normal Beaded Classic Lace Gown', price: 'GHS 9,500 - GHS 13,000', popular: false,
+      desc: 'Bespoke ball gown with hand-draped bodice, 3D florals, and chapel train. 8 fittings.',
+      images: []
+    },
+    
   ],
   bridal: [
     { id: 1, name: 'Luxe', price: 'GHS 2,500', popular: false,
