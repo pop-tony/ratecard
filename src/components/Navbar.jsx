@@ -10,7 +10,6 @@ const Navbar = ({theme, setTheme}) => {
   const navLinks = [
     { label: 'Packages', href: '#pricing' },
     { label: 'Consultation', href: '#consultation' },
-    { label: 'Book Now', href: '#intake' },
     { label: 'T&C', href: '#terms' },
   ]
 

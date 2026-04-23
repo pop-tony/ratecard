@@ -45,14 +45,42 @@ const ConsultationCard = () => {
     setStep('payment')
   }
 
-  const handlePaymentSubmit = (e) => {
+  const handlePaymentSubmit = async(e) => {
     e.preventDefault()
-    // YOU HANDLE PAYSTACK HERE
-    setTimeout(() => setStep('success'), 800)
+    await payWithPaystack(e);
   }
 
   const updateField = (field, value) => {
     setFormData(prev => ({...prev, [field]: value }))
+  }
+
+  const key = import.meta.env.VITE_PAYSTACK_LIVE_PUBLIC_KEY
+
+  const payWithPaystack = async (e) => {
+    e.preventDefault()
+    if (!window.PaystackPop) {
+      toast.error('Payment service not loaded. Please refresh.')
+      return
+    }
+    try {
+      const handler = window.PaystackPop.setup({
+        key: key,
+        email: formData.email,
+        amount: 80000,
+        currency: 'GHS',
+        ref: `${Date.now()}_${Math.floor(Math.random() * 1000000)}`,
+        onClose: () => toast.info('Payment window closed'),
+        callback: (response) => {
+          toast.success(`Payment complete! Ref: ${response.reference}`)
+          setStep('success')
+          onSubmitHandler()
+        },
+      })
+      handler.openIframe()
+    } catch (error) {
+      console.error(error)
+      toast.error('Error processing payment')
+    }
   }
 
   return (
@@ -250,7 +278,7 @@ const ConsultationCard = () => {
                       <div className='rounded-xl border border-amber-300 bg-amber-50 p-3 text-xs text-amber-900 dark:border-amber-400/20 dark:bg-amber-500/10 dark:text-amber-200 sm:rounded-2xl sm:p-4 sm:text-sm'>
                         <div className='flex gap-2'>
                           <CreditCard className='h-4 w-4 shrink-0 sm:h-5 sm:w-5' />
-                          <p>Clicking “Pay Now” will initialize Paystack. You’ll be redirected to complete payment securely.</p>
+                          <p>Clicking “Pay Now” implies you agree to the <a className='underline' href='#terms'>terms and conditions</a> and will initialize Paystack. You’ll be redirected to complete payment securely.</p>
                         </div>
                       </div>
 

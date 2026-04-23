@@ -42,16 +42,15 @@ const Footer = () => {
         { label: 'About Angela Hayford', href: '#about' },
         { label: 'Consultation', href: '#consultation' },
         { label: 'Terms & Conditions', href: '#terms' },
-        { label: 'Client Intake', href: '#intake' },
       ]
     }
   ]
 
   const socials = [
-    { icon: <InstagramIcon className='h-5 w-5' />, label: 'Instagram', href: 'https://instagram.com/angelahayford' },
+    { icon: <InstagramIcon className='h-5 w-5' />, label: 'Instagram', href: 'https://instagram.com/angelahayford_' },
     { icon: <FacebookIcon className='h-5 w-5' />, label: 'Facebook', href: 'https://facebook.com/angelahayford' },
-    { icon: <TikTokIcon className='h-5 w-5' />, label: 'TikTok', href: 'https://tiktok.com/@angelahayford' },
-    { icon: <Mail className='h-5 w-5' />, label: 'Email', href: 'mailto:hello@angelahayford.com' },
+    { icon: <TikTokIcon className='h-5 w-5' />, label: 'TikTok', href: 'https://tiktok.com/@angela.hayford' },
+    { icon: <Mail className='h-5 w-5' />, label: 'Email', href: 'mailto:angelahhayford@gmail.com' },
   ]
 
   return (
@@ -135,13 +134,13 @@ const Footer = () => {
               </li>
               <li className='flex items-center gap-2'>
                 <Phone className='h-4 w-4 shrink-0 text-rose-500' />
-                <a href='tel:+233000000000' className='hover:text-zinc-900 dark:hover:text-white'>
-                  +233 00 000 0000
+                <a href='tel:+233203713179' className='hover:text-zinc-900 dark:hover:text-white'>
+                  +233 203713179
                 </a>
               </li>
               <li className='flex items-center gap-2'>
                 <Mail className='h-4 w-4 shrink-0 text-rose-500' />
-                <a href='mailto:hello@angelahayford.com' className='hover:text-zinc-900 dark:hover:text-white'>
+                <a href='angelahhayford@gmail.com' className='hover:text-zinc-900 dark:hover:text-white'>
                   hello@angelahayford.com
                 </a>
               </li>

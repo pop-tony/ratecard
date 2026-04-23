@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from "motion/react"
-import { Sparkles, Check, X, ArrowLeft, CreditCard, CheckCircle2, Package, Image as ImageIcon } from 'lucide-react'
+import { Sparkles, Check, X, ArrowDown, ArrowLeft, CreditCard, CheckCircle2, Package, Image as ImageIcon } from 'lucide-react'
+//import { toast } from 'sonner' // npm i sonner
+import ClientIntakeForm from './ClientIntakeForm'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 16 },
@@ -15,7 +17,6 @@ const fadeUp = {
   }),
 }
 
-// Add desc + images to each package. Drop your image URLs in images: []
 const PRICING_DATA = {
   wedding: [
     { id: 1, name: 'Luxe Court', price: 'GHS 6,000', popular: false,
@@ -109,11 +110,12 @@ const TABS = [
 const PricingSection = () => {
   const [activeTab, setActiveTab] = useState('wedding')
   const [selectedPackage, setSelectedPackage] = useState(null)
-  const [step, setStep] = useState('info') // 'info' | 'checkout' | 'success'
+  const [step, setStep] = useState('info')
   const [clientData, setClientData] = useState({ name: '', email: '', phone: '' })
   const [activeImgIdx, setActiveImgIdx] = useState(0)
 
   const activeTier = PRICING_DATA[activeTab]
+  const key = import.meta.env.VITE_PAYSTACK_LIVE_PUBLIC_KEY
 
   useEffect(() => {
     if (selectedPackage) {
@@ -129,11 +131,40 @@ const PricingSection = () => {
   const closeModal = () => setSelectedPackage(null)
   const handlePlaceOrder = () => setStep('checkout')
   const updateField = (field, value) => setClientData(prev => ({...prev, [field]: value }))
+  const onSubmitHandler = () => setStep('success')
 
-  const handleCheckout = (e) => {
+  const getPriceInKobo = (priceStr) => parseInt(priceStr.replace(/\D/g, '')) * 100
+
+  const payWithPaystack = async (e) => {
     e.preventDefault()
-    // YOU HANDLE PAYSTACK HERE
-    setTimeout(() => setStep('success'), 800) // simulate
+    if (!window.PaystackPop) {
+      toast.error('Payment service not loaded. Please refresh.')
+      return
+    }
+    try {
+      const handler = window.PaystackPop.setup({
+        key: key,
+        email: clientData.email,
+        amount: getPriceInKobo(selectedPackage.price),
+        currency: 'GHS',
+        ref: `${Date.now()}_${Math.floor(Math.random() * 1000000)}`,
+        onClose: () => toast.info('Payment window closed'),
+        callback: (response) => {
+          toast.success(`Payment complete! Ref: ${response.reference}`)
+          setStep('success')
+          onSubmitHandler()
+        },
+      })
+      handler.openIframe()
+    } catch (error) {
+      console.error(error)
+      toast.error('Error processing payment')
+    }
+  }
+
+  const handleCheckout = async (e) => {
+    e.preventDefault()
+    await payWithPaystack(e)
   }
 
   return (
@@ -146,11 +177,11 @@ const PricingSection = () => {
         className='relative mx-auto max-w-7xl bg-white px-4 py-16 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 sm:px-6 sm:py-20 lg:py-28'
       >
         <div className='pointer-events-none absolute inset-0 -z-10 opacity-60 dark:opacity-40'>
-          <div className='absolute left-1/2 top-0 h- w- -translate-x-1/2 rounded-full bg-rose-200/60 blur- dark:bg-rose-500/20 sm:h- sm:w- sm:blur-' />
+          <div className='absolute left-1/2 top-0 h-64 w-64 -translate-x-1/2 rounded-full bg-rose-200/60 blur-3xl dark:bg-rose-500/20 sm:h-96 sm:w-96' />
         </div>
 
         <motion.div variants={fadeUp} className='mb-10 text-center md:mb-16'>
-          <span className='mb-3 inline-block rounded-full border border-rose-300 bg-rose-50 px-3 py-1 text- font-semibold uppercase tracking-wider text-rose-600 dark:border-rose-400/20 dark:bg-rose-500/10 dark:text-rose-300 sm:px-4 sm:py-1.5 sm:text-xs'>
+          <span className='mb-3 inline-block rounded-full border border-rose-300 bg-rose-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-rose-600 dark:border-rose-400/20 dark:bg-rose-500/10 dark:text-rose-300 sm:px-4 sm:py-1.5'>
             Investment
           </span>
           <h2 className='bg-gradient-to-b from-zinc-900 to-zinc-600 bg-clip-text text-3xl font-black text-transparent dark:from-white dark:to-zinc-400 sm:text-4xl md:text-5xl lg:text-6xl'>
@@ -161,20 +192,19 @@ const PricingSection = () => {
           </p>
         </motion.div>
 
-        {/* Tabs - scrollable on mobile */}
         <motion.div
           variants={fadeUp}
           custom={1}
-          className='mb-8 flex justify-start overflow-x-auto rounded-2xl border border-zinc-200 bg-zinc-100/80 p-1.5 backdrop-blur-xl dark:border-white/10 dark:bg-zinc-900/40 sm:mb-10 sm:justify-center'
+          className='mb-8 flex justify-start overflow-x-auto rounded-2xl border border-zinc-200 bg-zinc-100/80 p-1.5 backdrop-blur-xl scrollbar-hide dark:border-white/10 dark:bg-zinc-900/40 sm:mb-10 sm:justify-center'
         >
-          <div className='flex gap-1 sm:gap-1'>
+          <div className='flex gap-1'>
             {TABS.map((tab) => (
               <button
                 key={tab.key}
                 onClick={() => setActiveTab(tab.key)}
                 className={`relative whitespace-nowrap rounded-xl px-3 py-2 text-xs font-semibold transition-colors duration-200 sm:px-4 sm:py-2.5 sm:text-sm lg:px-6 ${
                   activeTab === tab.key
-                 ? 'text-white dark:text-zinc-900'
+                   ? 'text-white dark:text-zinc-900'
                     : 'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200'
                 }`}
               >
@@ -191,7 +221,6 @@ const PricingSection = () => {
           </div>
         </motion.div>
 
-        {/* Cards - 1 col mobile, 2 sm, 3 lg, 4 xl */}
         <motion.div
           key={activeTab}
           initial='hidden'
@@ -205,14 +234,14 @@ const PricingSection = () => {
               custom={i}
               variants={fadeUp}
               whileHover={{ y: -4 }}
-              className={`group relative flex flex-col rounded-2xl border p-5 transition-all duration-300 sm:rounded-3xl sm:p-6 lg:p-7 ${
+              className={`group relative flex flex-col rounded-2xl border p-5 transition-all duration-300 sm:rounded-3xl sm:p-6 lg:p-7 lg:hover:shadow-lg ${
                 tier.popular
-               ? 'border-rose-300 bg-gradient-to-b from-rose-50 via-rose-50/50 to-white shadow-lg shadow-rose-200/50 hover:shadow-rose-300/60 dark:border-rose-400/40 dark:from-rose-500/15 dark:via-rose-500/5 dark:to-transparent dark:shadow-rose-500/10 dark:hover:shadow-rose-500/20'
-                  : 'border-zinc-200 bg-white shadow-sm hover:border-zinc-300 hover:shadow-md dark:border-white/10 dark:bg-zinc-900/40 dark:shadow-none dark:hover:border-white/20'
+                 ? 'border-rose-300 bg-gradient-to-b from-rose-50 via-rose-50/50 to-white shadow-lg shadow-rose-200/50 lg:hover:shadow-rose-300/60 dark:border-rose-400/40 dark:from-rose-500/15 dark:via-rose-500/5 dark:to-transparent dark:shadow-rose-500/10 dark:lg:hover:shadow-rose-500/20'
+                  : 'border-zinc-200 bg-white shadow-sm lg:hover:border-zinc-300 lg:hover:shadow-md dark:border-white/10 dark:bg-zinc-900/40 dark:shadow-none dark:lg:hover:border-white/20'
               }`}
             >
               {tier.popular && (
-                <div className='absolute -top-2.5 left-1/2 -translate-x-1/2 flex items-center gap-1 rounded-full bg-gradient-to-r from-rose-500 to-amber-500 px-3 py-1 text- font-bold uppercase tracking-wide text-white shadow-lg shadow-rose-500/30 dark:text-zinc-900 sm:-top-3 sm:px-4 sm:py-1.5 sm:text-'>
+                <div className='absolute -top-2.5 left-1/2 -translate-x-1/2 flex items-center gap-1 rounded-full bg-gradient-to-r from-rose-500 to-amber-500 px-3 py-1 text- font-bold uppercase tracking-wide text-white shadow-lg shadow-rose-500/30 dark:text-zinc-900 sm:-top-3 sm:px-4 sm:py-1.5 sm:text-xs'>
                   <Sparkles className='h-3 w-3 sm:h-3.5 sm:w-3.5' /> Most Popular
                 </div>
               )}
@@ -234,20 +263,19 @@ const PricingSection = () => {
               <motion.button
                 onClick={() => setSelectedPackage(tier)}
                 whileTap={{ scale: 0.97 }}
-                className={`mt-5 flex w-full items-center justify-center gap-2 rounded-xl py-2.5 text-xs font-semibold transition-all duration-200 sm:mt-7 sm:py-3 sm:text-sm ${
+                className={`mt-5 flex w-full items-center justify-center gap-2 rounded-xl py-3 text-sm font-semibold transition-all duration-200 ${
                   tier.popular
-                 ? 'bg-gradient-to-r from-rose-500 to-amber-500 text-white hover:shadow-lg hover:shadow-rose-500/25 dark:text-zinc-900'
-                    : 'bg-zinc-900 text-white hover:bg-zinc-700 dark:bg-white/10 dark:text-white dark:ring-1 dark:ring-inset dark:ring-white/10 dark:hover:bg-white/15 dark:hover:ring-white/20'
+                   ? 'bg-gradient-to-r from-rose-500 to-amber-500 text-white lg:hover:shadow-lg lg:hover:shadow-rose-500/25 dark:text-zinc-900'
+                    : 'bg-zinc-900 text-white lg:hover:bg-zinc-700 dark:bg-white/10 dark:text-white dark:ring-1 dark:ring-inset dark:ring-white/10 dark:lg:hover:bg-white/15 dark:lg:hover:ring-white/20'
                 }`}
               >
-                <Check className='h-3.5 w-3.5 sm:h-4 sm:w-4' />
+                <Check className='h-4 w-4' />
                 Select Package
               </motion.button>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Notes */}
         <motion.div
           variants={fadeUp}
           custom={2}
@@ -262,7 +290,6 @@ const PricingSection = () => {
         </motion.div>
       </motion.section>
 
-      {/* Modal - Mobile first */}
       <AnimatePresence>
         {selectedPackage && (
           <>
@@ -281,9 +308,8 @@ const PricingSection = () => {
               transition={{ type: 'spring', bounce: 0.15, duration: 0.5 }}
               className='fixed inset-x-0 bottom-0 z-50 sm:inset-auto sm:left-1/2 sm:top-1/2 sm:w-[calc(100%-2rem)] sm:max-w-2xl sm:-translate-x-1/2 sm:-translate-y-1/2'
             >
-              <div className='max-h- overflow-y-auto rounded-t-3xl border border-zinc-200 bg-white shadow-2xl dark:border-white/10 dark:bg-zinc-900 sm:max-h- sm:rounded-3xl'>
+              <div className='max-h- overflow-y-auto rounded-t-3xl border border-zinc-200 bg-white shadow-2xl dark:border-white/10 dark:bg-zinc-900 sm:rounded-3xl'>
 
-                {/* Step 1: Info + Images */}
                 {step === 'info' && (
                   <div className='p-5 sm:p-8'>
                     <div className='flex items-start justify-between gap-3'>
@@ -308,7 +334,6 @@ const PricingSection = () => {
                       </button>
                     </div>
 
-                    {/* Image gallery */}
                     <div className='mt-5 sm:mt-6'>
                       {selectedPackage.images?.length > 0? (
                         <>
@@ -320,15 +345,15 @@ const PricingSection = () => {
                             />
                           </div>
                           {selectedPackage.images.length > 1 && (
-                            <div className='mt-3 flex gap-2 overflow-x-auto pb-1'>
+                            <div className='mt-3 flex gap-2 overflow-x-auto pb-1 scrollbar-hide'>
                               {selectedPackage.images.map((img, idx) => (
                                 <button
                                   key={idx}
                                   onClick={() => setActiveImgIdx(idx)}
-                                  className={`h-14 w-14 shrink-0 overflow-hidden rounded-lg border-2 sm:h-16 sm:w-16 ${
+                                  className={`h-14 w-14 shrink-0 overflow-hidden rounded-lg border-2 transition sm:h-16 sm:w-16 ${
                                     activeImgIdx === idx
-                                  ? 'border-rose-500'
-                                    : 'border-transparent opacity-60 hover:opacity-100'
+                                     ? 'border-rose-500'
+                                      : 'border-transparent opacity-60 hover:opacity-100'
                                   }`}
                                 >
                                   <img src={img} alt='' className='h-full w-full object-cover' />
@@ -373,10 +398,9 @@ const PricingSection = () => {
                   </div>
                 )}
 
-                {/* Step 2: Checkout */}
                 {step === 'checkout' && (
                   <div className='p-5 sm:p-8'>
-                    <div className='flex items-start justify-between gap-3'>
+                    <div className='flex items-center justify-between gap-3'>
                       <div className='flex items-center gap-2 sm:gap-3'>
                         <button
                           onClick={() => setStep('info')}
@@ -392,86 +416,27 @@ const PricingSection = () => {
                             {selectedPackage.name}
                           </p>
                         </div>
+                      </div>
                       <button
                         onClick={closeModal}
-                        className='-mr-2 -mt-2 rounded-lg p-2 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-white'
+                        className='-mr-2 rounded-lg p-2 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-white'
                       >
                         <X className='h-5 w-5' />
                       </button>
                     </div>
 
-                    <form onSubmit={handleCheckout} className='mt-5 space-y-3 sm:mt-6 sm:space-y-4'>
-                      <div>
-                        <label className='mb-1.5 block text-xs font-medium text-zinc-700 dark:text-zinc-300 sm:mb-2 sm:text-sm'>
-                          Full Name
-                        </label>
-                        <input
-                          type='text'
-                          required
-                          value={clientData.name}
-                          onChange={(e) => updateField('name', e.target.value)}
-                          className='w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-900 placeholder:text-zinc-400 outline-none focus:border-rose-500 focus:ring-4 focus:ring-rose-500/10 dark:border-white/10 dark:bg-black/20 dark:text-white sm:px-4 sm:py-3'
-                          placeholder='Enter your name'
-                        />
-                      </div>
-
-                      <div>
-                        <label className='mb-1.5 block text-xs font-medium text-zinc-700 dark:text-zinc-300 sm:mb-2 sm:text-sm'>
-                          Email
-                        </label>
-                        <input
-                          type='email'
-                          required
-                          value={clientData.email}
-                          onChange={(e) => updateField('email', e.target.value)}
-                          className='w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-900 placeholder:text-zinc-400 outline-none focus:border-rose-500 focus:ring-4 focus:ring-rose-500/10 dark:border-white/10 dark:bg-black/20 dark:text-white sm:px-4 sm:py-3'
-                          placeholder='your@email.com'
-                        />
-                      </div>
-
-                      <div>
-                        <label className='mb-1.5 block text-xs font-medium text-zinc-700 dark:text-zinc-300 sm:mb-2 sm:text-sm'>
-                          Phone
-                        </label>
-                        <input
-                          type='tel'
-                          required
-                          value={clientData.phone}
-                          onChange={(e) => updateField('phone', e.target.value)}
-                          className='w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-900 outline-none focus:border-rose-500 focus:ring-4 focus:ring-rose-500/10 dark:border-white/10 dark:bg-black/20 dark:text-white sm:px-4 sm:py-3'
-                          placeholder='+233...'
-                        />
-                      </div>
-
-                      <div className='rounded-xl border border-zinc-200 bg-zinc-50 p-3 dark:border-white/10 dark:bg-white/5 sm:rounded-2xl sm:p-4'>
-                        <div className='flex justify-between text-xs sm:text-sm'>
-                          <span className='text-zinc-600 dark:text-zinc-400'>Subtotal</span>
-                          <span className='font-semibold text-zinc-900 dark:text-white'>{selectedPackage.price}</span>
-                        </div>
-                        <div className='mt-2 flex justify-between border-t border-zinc-200 pt-2 text-xs dark:border-white/10 sm:text-sm'>
-                          <span className='font-semibold text-zinc-900 dark:text-white'>Total</span>
-                          <span className='font-bold text-rose-600 dark:text-rose-400'>{selectedPackage.price}</span>
-                        </div>
-                      </div>
-
-                      <div className='rounded-xl border border-amber-300 bg-amber-50 p-3 text-xs text-amber-900 dark:border-amber-400/20 dark:bg-amber-500/10 dark:text-amber-200 sm:rounded-2xl sm:p-4 sm:text-sm'>
-                        <div className='flex gap-2'>
-                          <CreditCard className='h-4 w-4 shrink-0 sm:h-5 sm:w-5' />
-                          <p>Clicking “Pay Now” will initialize Paystack. Complete payment securely with card or mobile money.</p>
-                        </div>
-                      </div>
-
-                      <button
-                        type='submit'
-                        className='w-full rounded-xl bg-gradient-to-r from-rose-500 to-amber-500 py-3 text-sm font-semibold text-white active:scale-[0.98] dark:text-zinc-900'
-                      >
-                        Pay {selectedPackage.price} with Paystack
-                      </button>
-                    </form>
+                    <ClientIntakeForm
+                      selectedPackage={selectedPackage}
+                      handleCheckout={handleCheckout}
+                      clientData={clientData}
+                      CreditCard={CreditCard}
+                      updateField={updateField}
+                      X={X}
+                      ArrowDown={ArrowDown}
+                    />
                   </div>
-                )
+                )}
 
-                {/* Step 3: Success */}
                 {step === 'success' && (
                   <div className='p-5 text-center sm:p-8'>
                     <motion.div
@@ -514,9 +479,6 @@ const PricingSection = () => {
                   </div>
                 )}
               </div>
-              )}
-              </div>
-              
             </motion.div>
           </>
         )}

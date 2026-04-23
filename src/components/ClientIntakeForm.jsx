@@ -1,66 +1,129 @@
-import React from 'react'
-import { motion } from "motion/react"
+import React, { useState } from 'react'
 
-const fadeUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }
-
-const ClientIntakeForm = () => {
-  const fields = [
-    { label: 'Full Name', type: 'text', span: 'md:col-span-2' },
-    { label: 'Email Address', type: 'email' },
-    { label: 'Emergency Number', type: 'tel' },
-    { label: 'Package Chosen', type: 'select', options: ['Wedding Gown', 'Thanksgiving', 'Bridal Shower', 'Engagement'], span: 'md:col-span-2' },
-    { label: 'Engagement Date', type: 'date' },
-    { label: 'Wedding Date', type: 'date' },
-    { label: 'Bridal Address', type: 'text', span: 'md:col-span-2' },
-  ]
+const ClientIntakeForm = ({selectedPackage, handleCheckout, clientData, CreditCard, updateField, X, ArrowDown}) => {
+  const [ocatioDetails, setOcatioDetails] = useState(false);
 
   return (
-    <motion.section
-      id='intake'
-      initial='hidden'
-      whileInView='visible'
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ staggerChildren: 0.08 }}
-      className='m-3 mx-auto max-w-4xl bg-white px-6 py-24 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100'
-    >
-      <motion.div
-        variants={fadeUp}
-        className='rounded-3xl border border-zinc-200 bg-white p-8 shadow-sm dark:border-white/10 dark:bg-white/5 dark:shadow-none md:p-12'
-      >
-        <h2 className='mb-10 bg-gradient-to-r from-zinc-900 to-zinc-600 bg-clip-text text-4xl font-black text-transparent dark:from-white dark:to-zinc-400 md:text-5xl'>
-          Client Details & Agreement
-        </h2>
+    <div className='mt-5'>
+      <div className='rounded-xl border border-amber-300 bg-amber-50 p-3 text-xs text-amber-900 dark:border-amber-400/20 dark:bg-amber-500/10 dark:text-amber-200 sm:rounded-2xl sm:p-4 sm:text-sm'>
+        <div className='flex justify-between'>
+          <p>Selected Package</p>
+          <p className='font-semibold'>{selectedPackage.name}</p>
+        </div>
+      </div>
 
-        <div className='grid grid-cols-1 gap-6 md:grid-cols-2'>
-          {fields.map((field) => (
-            <motion.div key={field.label} variants={fadeUp} className={`group ${field.span || ''}`}>
-              <label className='mb-2 block text-sm font-medium text-zinc-600 group-focus-within:text-rose-600 dark:text-zinc-400 dark:group-focus-within:text-rose-300'>
-                {field.label}
-              </label>
-              {field.type === 'select'? (
-                <select className='w-full rounded-xl border border-zinc-300 bg-white px-4 py-3 text-zinc-900 outline-none placeholder:text-zinc-400 focus:border-rose-500 focus:ring-4 focus:ring-rose-500/10 dark:border-white/10 dark:bg-black/20 dark:text-white dark:placeholder:text-zinc-500 dark:focus:border-rose-400/50'>
-                  <option value="">Select package</option>
-                  {field.options.map(o => <option key={o} value={o}>{o}</option>)}
-                </select>
-              ) : (
-                <input
-                  type={field.type}
-                  placeholder={`Enter ${field.label.toLowerCase()}`}
-                  className='w-full rounded-xl border border-zinc-300 bg-white px-4 py-3 text-zinc-900 placeholder:text-zinc-400 outline-none focus:border-rose-500 focus:ring-4 focus:ring-rose-500/10 dark:border-white/10 dark:bg-black/20 dark:text-white dark:placeholder:text-zinc-500 dark:focus:border-rose-400/50'
-                />
-              )}
-            </motion.div>
-          ))}
+      <form onSubmit={handleCheckout} className='mt-5 space-y-3 sm:mt-6 sm:space-y-4'>
+        <div>
+          <label className='mb-1.5 block text-xs font-medium text-zinc-700 dark:text-zinc-300 sm:mb-2 sm:text-sm'>
+            Full Name
+          </label>
+          <input
+            type='text'
+            required
+            value={clientData.name}
+            onChange={(e) => updateField('name', e.target.value)}
+            className='w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-900 placeholder:text-zinc-400 outline-none transition focus:border-rose-500 focus:ring-4 focus:ring-rose-500/10 dark:border-white/10 dark:bg-black/20 dark:text-white sm:px-4 sm:py-3'
+            placeholder='Enter your name'
+          />
         </div>
 
-        <motion.button
-          variants={fadeUp}
-          className='mt-10 w-full rounded-xl bg-gradient-to-r from-rose-500 to-amber-500 py-3 font-semibold text-white transition-transform hover:scale-[1.01] active:scale-[0.99] dark:text-zinc-900 md:w-auto md:px-8'
+        <div>
+          <label className='mb-1.5 block text-xs font-medium text-zinc-700 dark:text-zinc-300 sm:mb-2 sm:text-sm'>
+            Email
+          </label>
+          <input
+            type='email'
+            required
+            value={clientData.email}
+            onChange={(e) => updateField('email', e.target.value)}
+            className='w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-900 placeholder:text-zinc-400 outline-none transition focus:border-rose-500 focus:ring-4 focus:ring-rose-500/10 dark:border-white/10 dark:bg-black/20 dark:text-white sm:px-4 sm:py-3'
+            placeholder='your@email.com'
+          />
+        </div>
+
+        <div>
+          <label className='mb-1.5 block text-xs font-medium text-zinc-700 dark:text-zinc-300 sm:mb-2 sm:text-sm'>
+            Phone
+          </label>
+          <input
+            type='tel'
+            required
+            value={clientData.phone}
+            onChange={(e) => updateField('phone', e.target.value)}
+            className='w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-900 outline-none transition focus:border-rose-500 focus:ring-4 focus:ring-rose-500/10 dark:border-white/10 dark:bg-black/20 dark:text-white sm:px-4 sm:py-3'
+            placeholder='+233...'
+          />
+        </div>
+
+        {
+          ocatioDetails ? (
+            <div className='bg-zinc-200 rounded-lg p-2'>
+              <X onClick={() => setOcatioDetails(false)} className='h-5 w-5 border rounded m-2 cursor-pointer hover:bg-zinc-50' />
+              <div>
+                <label className='mb-1.5 block text-xs font-medium text-zinc-700 dark:text-zinc-300 sm:mb-2 sm:text-sm'>
+                  Engagement Date
+                </label>
+                <input
+                  type='date'
+                  required
+                  className='w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-900 outline-none transition focus:border-rose-500 focus:ring-4 focus:ring-rose-500/10 dark:border-white/10 dark:bg-black/20 dark:text-white sm:px-4 sm:py-3'
+                />
+              </div>
+
+              <div>
+                <label className='mb-1.5 block text-xs font-medium text-zinc-700 dark:text-zinc-300 sm:mb-2 sm:text-sm'>
+                  Wedding Date
+                </label>
+                <input
+                  type='date'
+                  required
+                  className='w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-900 outline-none transition focus:border-rose-500 focus:ring-4 focus:ring-rose-500/10 dark:border-white/10 dark:bg-black/20 dark:text-white sm:px-4 sm:py-3'
+                />
+              </div>
+
+              <div>
+                <label className='mb-1.5 block text-xs font-medium text-zinc-700 dark:text-zinc-300 sm:mb-2 sm:text-sm'>
+                  Bridal Address
+                </label>
+                <input
+                  type='text'
+                  required
+                  className='w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-900 outline-none transition focus:border-rose-500 focus:ring-4 focus:ring-rose-500/10 dark:border-white/10 dark:bg-black/20 dark:text-white sm:px-4 sm:py-3'
+                />
+              </div>
+
+            </div>
+          )
+          :
+          (<p onClick={() => setOcatioDetails(true)} className='flex w-fit cursor-pointer hover:bg-zinc-50 rounded-xl border border-zinc-200 bg-zinc-200 p-1 dark:border-white/10 dark:bg-white/5 sm:rounded-2xl sm:p-2'>Ocation Details...<ArrowDown className='h-5 w-5' /></p>)
+        }
+
+        <div className='rounded-xl border border-zinc-200 bg-zinc-50 p-3 dark:border-white/10 dark:bg-white/5 sm:rounded-2xl sm:p-4'>
+          <div className='flex justify-between text-xs sm:text-sm'>
+            <span className='text-zinc-600 dark:text-zinc-400'>Subtotal</span>
+            <span className='font-semibold text-zinc-900 dark:text-white'>{selectedPackage.price}</span>
+          </div>
+          <div className='mt-2 flex justify-between border-t border-zinc-200 pt-2 text-xs dark:border-white/10 sm:text-sm'>
+            <span className='font-semibold text-zinc-900 dark:text-white'>Total</span>
+            <span className='font-bold text-rose-600 dark:text-rose-400'>{selectedPackage.price}</span>
+          </div>
+        </div>
+
+        <div className='rounded-xl border border-amber-300 bg-amber-50 p-3 text-xs text-amber-900 dark:border-amber-400/20 dark:bg-amber-500/10 dark:text-amber-200 sm:rounded-2xl sm:p-4 sm:text-sm'>
+          <div className='flex gap-2'>
+            <CreditCard className='h-4 w-4 shrink-0 sm:h-5 sm:w-5' />
+            <p>Clicking “Pay Now” implies you agree to the <a className='underline' href='#terms'>terms and conditions</a> and will initialize Paystack. Complete payment securely with card or mobile money.</p>
+          </div>
+        </div>
+
+        <button
+          type='submit'
+          className='w-full rounded-xl bg-gradient-to-r from-rose-500 to-amber-500 py-3 text-sm font-semibold text-white transition active:scale-[0.98] dark:text-zinc-900'
         >
-          Submit Inquiry
-        </motion.button>
-      </motion.div>
-    </motion.section>
+          Pay {selectedPackage.price} with Paystack
+        </button>
+      </form>
+    </div>
   )
 }
 

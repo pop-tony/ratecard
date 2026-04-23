@@ -54,10 +54,10 @@ const Hero = () => {
             View Packages
           </a>
           <a
-            href="#intake"
+            href="#consultation"
             className='w-full rounded-xl border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/10 sm:w-auto sm:px-8 sm:text-base'
           >
-            Start Your Inquiry
+            Book Consultation
           </a>
         </motion.div>
       </motion.div>
