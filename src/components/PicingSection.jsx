@@ -281,7 +281,7 @@ const PricingSection = () => {
           custom={2}
           className='mx-auto mt-12 grid max-w-4xl gap-3 text-xs sm:mt-16 sm:gap-4 sm:text-sm md:grid-cols-2'
         >
-          <div className='rounded-xl border border-amber-300 bg-amber-50 p-4 text-amber-900 dark:border-amber-400/20 dark:bg-gradient-to-br dark:from-amber-500/10 dark:to-transparent dark:text-amber-200/90 sm:rounded-2xl sm:p-5'>
+          <div className='rounded-xl border border-amber-300 bg-amber-40 p-4 text-amber-900 dark:border-amber-400/20 dark:bg-gradient-to-br dark:from-amber-200/10 dark:to-transparent dark:text-amber-200/90 sm:rounded-2xl sm:p-5'>
             <span className='font-semibold text-amber-950 dark:text-amber-200'>Note:</span> Rates may differ for plus size. Engagement prices exclude kente fabric.
           </div>
           <div className='rounded-xl border border-zinc-200 bg-zinc-50 p-4 text-zinc-700 dark:border-white/10 dark:bg-zinc-900/40 dark:text-zinc-300 sm:rounded-2xl sm:p-5'>

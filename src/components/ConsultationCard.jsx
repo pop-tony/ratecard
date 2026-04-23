@@ -91,7 +91,7 @@ const ConsultationCard = () => {
         whileInView='visible'
         viewport={{ once: true }}
         transition={{ staggerChildren: 0.1 }}
-        className='mx-auto max-w-4xl bg-white px-4 py-16 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 sm:px-6 sm:py-24'
+        className='my-4 mx-auto max-w-4xl bg-white px-4 py-16 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 sm:px-6 sm:py-24'
       >
         <motion.div
           variants={fadeUp}
