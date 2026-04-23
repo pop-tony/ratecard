@@ -84,7 +84,7 @@ const ConsultationCard = () => {
   }
 
   const creatOrder = async()=>{
-    //if(!paymentSuccess) return;
+    if(!paymentSuccess) return;
     
     try {
       const consult = await axios.post("https://sojamart-backend.vercel.app/api/order/consult", {formData});
@@ -100,7 +100,6 @@ const ConsultationCard = () => {
 
   const handlePaymentSubmit = async(e) => {
     e.preventDefault()
-    await creatOrder();
     const paymentSuccess = await payWithPaystack(e)
     if(paymentSuccess){
       setPaymentSuccess(true);

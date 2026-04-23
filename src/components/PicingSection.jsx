@@ -112,7 +112,7 @@ const PricingSection = () => {
   const [activeTab, setActiveTab] = useState('wedding')
   const [selectedPackage, setSelectedPackage] = useState(null)
   const [step, setStep] = useState('info')
-  const [clientData, setClientData] = useState({ name: '', email: '', phone: '', eDate: '', wDate: '', bAddress: '' })
+  const [clientData, setClientData] = useState({ name: '', email: '', phone: '', eDate: '04/04/2026', wDate: '04/04/2026', bAddress: 'Home' })
   const [activeImgIdx, setActiveImgIdx] = useState(0)
 
   const [paymentSuccess, setPaymentSuccess] = useState(false)
@@ -167,7 +167,7 @@ const PricingSection = () => {
   }
 
   const creatOrder = async()=>{
-    //if(!paymentSuccess) return;
+    if(!paymentSuccess) return;
     
     try {
       const order = await axios.post("https://sojamart-backend.vercel.app/api/order/create-orderA", {clientData, selectedPackage});
@@ -183,7 +183,6 @@ const PricingSection = () => {
 
   const handleCheckout = async (e) => {
     e.preventDefault()
-    await creatOrder();
     const paymentSuccess = await payWithPaystack(e)
     if(paymentSuccess){
       setPaymentSuccess(true);
