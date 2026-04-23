@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
+import { toast } from 'sonner'
 import { motion, AnimatePresence } from "motion/react"
 import { Info, Clock, AlertCircle, Scissors, CalendarCheck, X, ArrowLeft, CheckCircle2, CreditCard } from 'lucide-react'
+import axios from 'axios'
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } }
 
@@ -13,6 +15,8 @@ const ConsultationCard = () => {
     phone: '',
     date: '',
   })
+
+  const [paymentSuccess, setPaymentSuccess] = useState(false)
 
   const details = [
     { icon: <Info className='h-5 w-5' />, title: 'Consultation Fee', desc: 'GHS 800 for 30-minute session with lead designer' },
@@ -45,11 +49,6 @@ const ConsultationCard = () => {
     setStep('payment')
   }
 
-  const handlePaymentSubmit = async(e) => {
-    e.preventDefault()
-    await payWithPaystack(e);
-  }
-
   const updateField = (field, value) => {
     setFormData(prev => ({...prev, [field]: value }))
   }
@@ -74,12 +73,38 @@ const ConsultationCard = () => {
           toast.success(`Payment complete! Ref: ${response.reference}`)
           setStep('success')
           onSubmitHandler()
+          return(true)
         },
       })
       handler.openIframe()
     } catch (error) {
       console.error(error)
       toast.error('Error processing payment')
+    }
+  }
+
+  const creatOrder = async()=>{
+    //if(!paymentSuccess) return;
+    
+    try {
+      const consult = await axios.post("https://sojamart-backend.vercel.app/api/order/consult", {formData});
+      if(consult.success){
+        toast.success("Consultation successfully booked!")
+      }
+    } catch (error) {
+      toast.error("Unable to book.. try again")
+     console.log(error) 
+    }
+
+  }
+
+  const handlePaymentSubmit = async(e) => {
+    e.preventDefault()
+    await creatOrder();
+    const paymentSuccess = await payWithPaystack(e)
+    if(paymentSuccess){
+      setPaymentSuccess(true);
+      await creatOrder();
     }
   }
 

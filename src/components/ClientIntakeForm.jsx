@@ -57,15 +57,16 @@ const ClientIntakeForm = ({selectedPackage, handleCheckout, clientData, CreditCa
 
         {
           ocatioDetails ? (
-            <div className='bg-zinc-200 rounded-lg p-2'>
+            <div className='bg-zinc-700 rounded-lg p-2'>
               <X onClick={() => setOcatioDetails(false)} className='h-5 w-5 border rounded m-2 cursor-pointer hover:bg-zinc-50' />
               <div>
                 <label className='mb-1.5 block text-xs font-medium text-zinc-700 dark:text-zinc-300 sm:mb-2 sm:text-sm'>
                   Engagement Date
                 </label>
                 <input
+                  onChange={(e) => updateField('eDate', e.target.value)}
+                  value={clientData.eDate}
                   type='date'
-                  required
                   className='w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-900 outline-none transition focus:border-rose-500 focus:ring-4 focus:ring-rose-500/10 dark:border-white/10 dark:bg-black/20 dark:text-white sm:px-4 sm:py-3'
                 />
               </div>
@@ -75,8 +76,9 @@ const ClientIntakeForm = ({selectedPackage, handleCheckout, clientData, CreditCa
                   Wedding Date
                 </label>
                 <input
+                  onChange={(e) => updateField('wDate', e.target.value)}
+                  value={clientData.wDate}
                   type='date'
-                  required
                   className='w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-900 outline-none transition focus:border-rose-500 focus:ring-4 focus:ring-rose-500/10 dark:border-white/10 dark:bg-black/20 dark:text-white sm:px-4 sm:py-3'
                 />
               </div>
@@ -86,8 +88,9 @@ const ClientIntakeForm = ({selectedPackage, handleCheckout, clientData, CreditCa
                   Bridal Address
                 </label>
                 <input
+                  onChange={(e) => updateField('bAddress', e.target.value)}
+                  value={clientData.bAddress}
                   type='text'
-                  required
                   className='w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-900 outline-none transition focus:border-rose-500 focus:ring-4 focus:ring-rose-500/10 dark:border-white/10 dark:bg-black/20 dark:text-white sm:px-4 sm:py-3'
                 />
               </div>

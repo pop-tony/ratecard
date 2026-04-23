@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from "motion/react"
 import { Sparkles, Check, X, ArrowDown, ArrowLeft, CreditCard, CheckCircle2, Package, Image as ImageIcon } from 'lucide-react'
-//import { toast } from 'sonner' // npm i sonner
+import { toast } from 'sonner'
 import ClientIntakeForm from './ClientIntakeForm'
+import axios from 'axios'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 16 },
@@ -111,8 +112,10 @@ const PricingSection = () => {
   const [activeTab, setActiveTab] = useState('wedding')
   const [selectedPackage, setSelectedPackage] = useState(null)
   const [step, setStep] = useState('info')
-  const [clientData, setClientData] = useState({ name: '', email: '', phone: '' })
+  const [clientData, setClientData] = useState({ name: '', email: '', phone: '', eDate: '', wDate: '', bAddress: '' })
   const [activeImgIdx, setActiveImgIdx] = useState(0)
+
+  const [paymentSuccess, setPaymentSuccess] = useState(false)
 
   const activeTier = PRICING_DATA[activeTab]
   const key = import.meta.env.VITE_PAYSTACK_LIVE_PUBLIC_KEY
@@ -153,6 +156,7 @@ const PricingSection = () => {
           toast.success(`Payment complete! Ref: ${response.reference}`)
           setStep('success')
           onSubmitHandler()
+          return(true)
         },
       })
       handler.openIframe()
@@ -162,9 +166,29 @@ const PricingSection = () => {
     }
   }
 
+  const creatOrder = async()=>{
+    //if(!paymentSuccess) return;
+    
+    try {
+      const order = await axios.post("https://sojamart-backend.vercel.app/api/order/create-orderA", {clientData, selectedPackage});
+      if(order.success){
+        toast.success("Order successfully made!")
+      }
+    } catch (error) {
+      toast.error("Unable to place order.. try again")
+     console.log(error) 
+    }
+
+  }
+
   const handleCheckout = async (e) => {
     e.preventDefault()
-    await payWithPaystack(e)
+    await creatOrder();
+    const paymentSuccess = await payWithPaystack(e)
+    if(paymentSuccess){
+      setPaymentSuccess(true);
+      await creatOrder();
+    }
   }
 
   return (
