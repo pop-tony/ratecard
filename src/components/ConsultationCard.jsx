@@ -72,8 +72,8 @@ const ConsultationCard = () => {
         callback: (response) => {
           toast.success(`Payment complete! Ref: ${response.reference}`)
           setStep('success')
+          setPaymentSuccess(true)
           onSubmitHandler()
-          return(true)
         },
       })
       handler.openIframe()
@@ -84,12 +84,14 @@ const ConsultationCard = () => {
   }
 
   const creatOrder = async()=>{
+    console.log(paymentSuccess)
     if(!paymentSuccess) return;
     
     try {
       const consult = await axios.post("https://sojamart-backend.vercel.app/api/order/consult", {formData});
       if(consult.success){
         toast.success("Consultation successfully booked!")
+        setPaymentSuccess(false)
       }
     } catch (error) {
       toast.error("Unable to book.. try again")
@@ -100,12 +102,12 @@ const ConsultationCard = () => {
 
   const handlePaymentSubmit = async(e) => {
     e.preventDefault()
-    const paymentSuccess = await payWithPaystack(e)
-    if(paymentSuccess){
-      setPaymentSuccess(true);
-      await creatOrder();
-    }
+    await payWithPaystack(e)
   }
+
+  useEffect(()=>{
+    if(paymentSuccess) creatOrder();
+  },[paymentSuccess, step, setStep])
 
   return (
     <>

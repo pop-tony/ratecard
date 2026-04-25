@@ -155,8 +155,8 @@ const PricingSection = () => {
         callback: (response) => {
           toast.success(`Payment complete! Ref: ${response.reference}`)
           setStep('success')
+          setPaymentSuccess(true);
           onSubmitHandler()
-          return(true)
         },
       })
       handler.openIframe()
@@ -173,6 +173,7 @@ const PricingSection = () => {
       const order = await axios.post("https://sojamart-backend.vercel.app/api/order/create-orderA", {clientData, selectedPackage});
       if(order.success){
         toast.success("Order successfully made!")
+        setPaymentSuccess(false);
       }
     } catch (error) {
       toast.error("Unable to place order.. try again")
@@ -183,12 +184,12 @@ const PricingSection = () => {
 
   const handleCheckout = async (e) => {
     e.preventDefault()
-    const paymentSuccess = await payWithPaystack(e)
-    if(paymentSuccess){
-      setPaymentSuccess(true);
-      await creatOrder();
-    }
+    await payWithPaystack(e)
   }
+
+  useEffect(()=>{
+    if(paymentSuccess) creatOrder();
+  },[paymentSuccess])
 
   return (
     <>
