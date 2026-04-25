@@ -89,7 +89,6 @@ const ConsultationCard = () => {
     
     try {
       const consult = await axios.post("https://sojamart-backend.vercel.app/api/order/consult", {formData});
-      console.log(consult)
       if(consult.data.success){
         toast.success("Consultation successfully booked!")
       }
