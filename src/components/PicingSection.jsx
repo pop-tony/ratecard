@@ -176,8 +176,9 @@ const PricingSection = () => {
         setPaymentSuccess(false);
       }
     } catch (error) {
+      setPaymentSuccess(false);
       toast.error("Unable to place order.. try again")
-     console.log(error) 
+      console.log(error) 
     }
 
   }

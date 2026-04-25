@@ -94,8 +94,9 @@ const ConsultationCard = () => {
         setPaymentSuccess(false)
       }
     } catch (error) {
+      setPaymentSuccess(false);
       toast.error("Unable to book.. try again")
-     console.log(error) 
+      console.log(error) 
     }
 
   }
