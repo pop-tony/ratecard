@@ -171,15 +171,15 @@ const PricingSection = () => {
     
     try {
       const order = await axios.post("https://sojamart-backend.vercel.app/api/order/create-orderA", {clientData, selectedPackage});
-      if(order.success){
+      if(order.data.success){
         toast.success("Order successfully made!")
-        setPaymentSuccess(false);
       }
     } catch (error) {
-      setPaymentSuccess(false);
       toast.error("Unable to place order.. try again")
       console.log(error) 
     }
+
+    setPaymentSuccess(false);
 
   }
 

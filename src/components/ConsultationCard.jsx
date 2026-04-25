@@ -89,15 +89,16 @@ const ConsultationCard = () => {
     
     try {
       const consult = await axios.post("https://sojamart-backend.vercel.app/api/order/consult", {formData});
-      if(consult.success){
+      console.log(consult)
+      if(consult.data.success){
         toast.success("Consultation successfully booked!")
-        setPaymentSuccess(false)
       }
     } catch (error) {
-      setPaymentSuccess(false);
       toast.error("Unable to book.. try again")
       console.log(error) 
     }
+
+    setPaymentSuccess(false);
 
   }
 
