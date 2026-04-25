@@ -84,7 +84,7 @@ const ConsultationCard = () => {
   }
 
   const creatOrder = async()=>{
-    console.log(paymentSuccess)
+    
     if(!paymentSuccess) return;
     
     try {
