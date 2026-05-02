@@ -6,6 +6,7 @@ import PricingSection from './components/PicingSection'
 import TermsSection from './components/TermsSection'
 import Footer from './components/Footer'
 import { Toaster } from 'sonner'
+import BridalPricingFlyer from './components/BridalPricingFlyer'
 
 const App = () => {
 

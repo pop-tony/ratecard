@@ -20,35 +20,35 @@ const fadeUp = {
 
 const PRICING_DATA = {
   wedding: [
-    { id: 1, name: 'Luxe Court', price: 'GHS 6,000', popular: false,
+    { id: 1, name: 'Luxe Court Gown', price: 'GHS 6,000', popular: false,
       desc: 'Classic court train silhouette with premium satin. Includes basic beadwork, 3 fittings, and custom bustle.',
-      images: ['/images/luxe-court-1.jpg', '/images/luxe-court-2.jpg']
+      images: []
     },
-    { id: 2, name: 'Deluxe Court', price: 'GHS 9,000', popular: false,
+    { id: 2, name: 'Deluxe Court Gown', price: 'GHS 9,000', popular: false,
       desc: 'Extended court train with lace appliqué and crystal detailing. 4 fittings included.',
       images: []
     },
-    { id: 3, name: 'Classic Plain', price: 'GHS 8,000', popular: false,
+    { id: 3, name: 'Classic Plain Gown', price: 'GHS 8,000', popular: false,
       desc: 'Minimalist crepe gown with clean lines. Perfect for modern brides. 3 fittings.',
       images: []
     },
-    { id: 4, name: 'Luxe Plain', price: 'GHS 10,000', popular: false,
+    { id: 4, name: 'Luxe Plain Gown', price: 'GHS 10,000', popular: false,
       desc: 'Structured mikado with hidden corsetry. Sculptural and elegant. 4 fittings.',
       images: []
     },
-    { id: 5, name: 'Deluxe Plain + Detachable', price: 'GHS 14,000', popular: true,
+    { id: 5, name: 'Deluxe Plain + Detachable Gown', price: 'GHS 14,000', popular: true,
       desc: 'Two looks in one. Detachable overskirt + fitted base gown. 5 fittings included.',
       images: []
     },
-    { id: 6, name: 'Classic Lace', price: 'GHS 14,000', popular: false,
+    { id: 6, name: 'Classic Lace Gown', price: 'GHS 14,000 - GHS 17,000', popular: false,
       desc: 'All-over Chantilly lace with illusion back. Timeless romantic feel. 4 fittings.',
       images: []
     },
-    { id: 7, name: 'Luxe Lace', price: 'GHS 17,000', popular: false,
+    { id: 7, name: 'Luxe Lace Gown', price: 'GHS 17,000', popular: false,
       desc: 'Hand-beaded French lace with cathedral train. Heirloom quality. 5 fittings.',
       images: []
     },
-    { id: 8, name: 'Deluxe Lace', price: 'GHS 20,000', popular: false,
+    { id: 8, name: 'Deluxe Lace Gown', price: 'GHS 20,000 - GHS 35,000', popular: false,
       desc: 'Couture lace with custom embroidery and Swarovski crystals. 6 fittings.',
       images: []
     },
@@ -57,6 +57,14 @@ const PRICING_DATA = {
       images: []
     },
     { id: 10, name: 'Deluxe Ball Gown', price: 'GHS 35,000', popular: false,
+      desc: 'Bespoke ball gown with hand-draped bodice, 3D florals, and chapel train. 8 fittings.',
+      images: []
+    },
+    { id: 10, name: 'Normal beaded lace Gown', price: 'GHS 9,500 - GHS 13,000', popular: false,
+      desc: 'Bespoke ball gown with hand-draped bodice, 3D florals, and chapel train. 8 fittings.',
+      images: []
+    },
+    { id: 10, name: 'Custom beaded Gown', price: 'GHS 45,000 - GHS 50,000', popular: false,
       desc: 'Bespoke ball gown with hand-draped bodice, 3D florals, and chapel train. 8 fittings.',
       images: []
     },
@@ -99,12 +107,31 @@ const PRICING_DATA = {
       images: []
     },
   ],
+  reception: [
+    { id: 1, name: 'Plain Reception gown', price: 'GHS 5,000', popular: false,
+      desc: 'Chic mini or midi dress for your bridal shower. Custom fit, luxe fabric. 2 fittings included.', images: [] },
+    { id: 2, name: 'Short Reception dress wtih normal beaded lace', price: 'GHS 6,500', popular: false,
+      desc: 'Statement shower look with feathers, pearls, or custom embroidery. 3 fittings included.', images: [] },
+    { id: 2, name: 'Long reception dress with normal beaded lace', price: 'GHS 9,000', popular: false,
+      desc: 'Statement shower look with feathers, pearls, or custom embroidery. 3 fittings included.', images: [] },
+    { id: 2, name: 'Short Reception dress with luxury lace', price: 'GHS 9,000', popular: false,
+      desc: 'Statement shower look with feathers, pearls, or custom embroidery. 3 fittings included.', images: [] },
+    { id: 2, name: 'Sllll Reception dress wtih normal beaded lace', price: 'GHS 6,500', popular: false,
+      desc: 'Statement shower look with feathers, pearls, or custom embroidery. 3 fittings included.', images: [] },
+    { id: 2, name: 'Deluxe reception dress with luxury lace', price: 'GHS 17,000', popular: false,
+      desc: 'Statement shower look with feathers, pearls, or custom embroidery. 3 fittings included.', images: [] },
+    { id: 2, name: 'Short Custom hand beaded reception dress', price: 'GHS 15,000 - GHS 20,000', popular: false,
+      desc: 'Statement shower look with feathers, pearls, or custom embroidery. 3 fittings included.', images: [] },
+    { id: 2, name: 'Long Custom hand beaded reception dress', price: 'GHS 25,000 - GHS 30,000', popular: false,
+      desc: 'Statement shower look with feathers, pearls, or custom embroidery. 3 fittings included.', images: [] }
+  ],
 }
 
 const TABS = [
   { key: 'wedding', label: 'Wedding Gowns' },
   { key: 'bridal', label: 'Bridal Shower' },
   { key: 'thanksgiving', label: 'Thanksgiving' },
+  { key: 'reception', label: 'Reception' },
   { key: 'engagement', label: 'Engagement' },
 ]
 

@@ -15,11 +15,11 @@ const TermsSection = () => {
     },
     {
       title: 'Fittings',
-      content: 'Clients must attend at least two fittings before collection of outfits. Failure to do so means designer is not liable for fitting problems or alteration costs.'
+      content: 'Clients must attend at least two fittings before collection of outfits. Failure to do so means designer is not accountable for fitting problems or alteration costs.'
     },
     {
       title: 'Transportation & Accommodation',
-      content: 'Transportation discussed based on location. Bridal dress up: Accra GHS 600, Outside Accra GHS 1500, Outside Ghana GHS 2500–3500. Client responsible for travel, accommodation, and feeding for events outside Accra. Flights booked by client for locations outside Ghana and outside Accra like Kumasi, Takoradi, North, Brong Ahafo.'
+      content: 'Transportation is discussed based on location. Bridal dress up: Accra GHS 600, Outside Accra GHS 1500, Outside Ghana GHS 2500–3500. Client is responsible for travel, accommodation, and feeding for events outside Accra. Flight is booked by client for locations outside Ghana and outside Accra.'
     }
   ]
 

@@ -19,7 +19,7 @@ const ConsultationCard = () => {
   const [paymentSuccess, setPaymentSuccess] = useState(false)
 
   const details = [
-    { icon: <Info className='h-5 w-5' />, title: 'Consultation Fee', desc: 'GHS 800 for 30-minute session with lead designer' },
+    { icon: <Info className='h-5 w-5' />, title: 'Consultation Fee', desc: 'GHS 400 - GHS 800 for 30-minute session with lead designer' },
     { icon: <Clock className='h-5 w-5' />, title: 'Booking Timeline', desc: 'Book 3–6 months or up to 1 year before event date' },
     { icon: <AlertCircle className='h-5 w-5' />, title: 'Style Preparation', desc: 'Bring style inspirations. Indecisive clients should book consultation first' },
     { icon: <Scissors className='h-5 w-5' />, title: 'Mock-ups', desc: 'Style inspiration mock-ups charged separately. Price set by designer after consultation' },
