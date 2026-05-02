@@ -21,71 +21,71 @@ const fadeUp = {
 const PRICING_DATA = {
   wedding: [
     { id: 1, name: 'Luxe Court Gown', price: 'GHS 6,000', popular: false,
-      desc: 'Classic court train silhouette with premium satin. Includes basic beadwork, 3 fittings, and custom bustle.',
+      desc: 'Classic court train silhouette with premium satin. Includes basic beadwork, 3 fittings, and custom bustle.', 
       images: []
     },
     { id: 2, name: 'Deluxe Court Gown', price: 'GHS 9,000', popular: false,
-      desc: 'Extended court train with lace appliqué and crystal detailing. 4 fittings included.',
+      desc: 'Extended court train with lace appliqué and crystal detailing. 4 fittings included.', 
       images: []
     },
     { id: 3, name: 'Classic Plain Gown', price: 'GHS 8,000', popular: false,
-      desc: 'Minimalist crepe gown with clean lines. Perfect for modern brides. 3 fittings.',
+      desc: 'Minimalist crepe gown with clean lines. Perfect for modern brides. 3 fittings.', 
       images: []
     },
-    { id: 4, name: 'Luxe Plain Gown', price: 'GHS 10,000', popular: false,
-      desc: 'Structured mikado with hidden corsetry. Sculptural and elegant. 4 fittings.',
+    { id: 4, name: 'Luxe Plain Gown', price: 'GHS 10,000 - GHS 14,000', popular: false,
+      desc: 'Structured mikado with hidden corsetry. Sculptural and elegant. 4 fittings.', 
       images: []
     },
-    { id: 5, name: 'Deluxe Plain + Detachable Gown', price: 'GHS 14,000', popular: true,
-      desc: 'Two looks in one. Detachable overskirt + fitted base gown. 5 fittings included.',
+    { id: 5, name: 'Deluxe Plain Gown', price: 'GHS 14,000 - GHS 20,000', popular: true,
+      desc: 'Two looks in one. Detachable overskirt + fitted base gown. 5 fittings included.', 
+      images: []
+    },
+    { id: 10, name: 'Normal beaded lace Gown', price: 'GHS 9,500 - GHS 13,000', popular: false,
+      desc: 'Bespoke ball gown with hand-draped bodice, 3D florals, and chapel train. 8 fittings.', 
       images: []
     },
     { id: 6, name: 'Classic Lace Gown', price: 'GHS 14,000 - GHS 17,000', popular: false,
-      desc: 'All-over Chantilly lace with illusion back. Timeless romantic feel. 4 fittings.',
+      desc: 'All-over Chantilly lace with illusion back. Timeless romantic feel. 4 fittings.', 
       images: []
     },
-    { id: 7, name: 'Luxe Lace Gown', price: 'GHS 17,000', popular: false,
-      desc: 'Hand-beaded French lace with cathedral train. Heirloom quality. 5 fittings.',
+    { id: 7, name: 'Luxe Lace Gown', price: 'GHS 17,000 - GHS 20,000', popular: false,
+      desc: 'Hand-beaded French lace with cathedral train. Heirloom quality. 5 fittings.', 
       images: []
     },
     { id: 8, name: 'Deluxe Lace Gown', price: 'GHS 20,000 - GHS 35,000', popular: false,
-      desc: 'Couture lace with custom embroidery and Swarovski crystals. 6 fittings.',
+      desc: 'Couture lace with custom embroidery and Swarovski crystals. 6 fittings.', 
       images: []
     },
-    { id: 9, name: 'Luxe Ball Gown', price: 'GHS 25,000', popular: false,
-      desc: 'Full ball gown with layered tulle and structured bodice. Princess moment. 6 fittings.',
+    { id: 9, name: 'Luxe Ball Gown', price: 'GHS 25,000 - GHS 30,000', popular: false,
+      desc: 'Full ball gown with layered tulle and structured bodice. Princess moment. 6 fittings.', 
       images: []
     },
-    { id: 10, name: 'Deluxe Ball Gown', price: 'GHS 35,000', popular: false,
-      desc: 'Bespoke ball gown with hand-draped bodice, 3D florals, and chapel train. 8 fittings.',
+    { id: 10, name: 'Deluxe Ball Gown', price: 'GHS 35,000 - GHS 45,000', popular: false,
+      desc: 'Bespoke ball gown with hand-draped bodice, 3D florals, and chapel train. 8 fittings.', 
       images: []
     },
-    { id: 11, name: 'Normal beaded lace Gown', price: 'GHS 9,500 - GHS 13,000', popular: false,
-      desc: 'Bespoke ball gown with hand-draped bodice, 3D florals, and chapel train. 8 fittings.',
-      images: []
-    },
-    { id: 12, name: 'Custom beaded Gown', price: 'GHS 45,000 - GHS 50,000', popular: false,
+    { id: 10, name: 'Custom beaded Gown', price: 'GHS 45,000 - GHS 50,000', popular: false,
       desc: 'Bespoke ball gown with hand-draped bodice, 3D florals, and chapel train. 8 fittings.',
       images: []
     },
   ],
   bridal: [
-    { id: 1, name: 'Luxe', price: 'GHS 2,500', popular: false,
-      desc: 'Chic mini or midi dress for your bridal shower. Custom fit, luxe fabric.',
+    { id: 1, name: 'Luxe', price: 'GHS 2,500 - GHS 3,500', popular: false,
+      desc: 'Chic mini or midi dress for your bridal shower. Custom fit, luxe fabric. 2 fittings included.',
       images: []
     },
-    { id: 2, name: 'Deluxe', price: 'GHS 4,500', popular: false,
-      desc: 'Statement shower look with feathers, pearls, or custom embroidery.',
+    { id: 2, name: 'Deluxe', price: 'GHS 4,500 - GHS 6,500', popular: false,
+      desc: 'Statement shower look with feathers, pearls, or custom embroidery. 3 fittings included.',
       images: []
     },
   ],
   thanksgiving: [
-    { id: 1, name: 'Luxe', price: 'GHS 4,500', popular: false,
-      desc: 'Elegant thanksgiving dress in Ankara, lace, or crepe. Church-ready.',
+    { id: 1, name: 'Luxe', price: 'GHS 4,000 - GHS 6,500', popular: false,
+      desc: 'Elegant thanksgiving dress in Ankara, lace, or crepe. Church-ready. 2 fittings included.',
       images: []
     },
-    { id: 2, name: 'Deluxe', price: 'GHS 7,000', popular: true,
-      desc: 'Heavily beaded or custom-printed thanksgiving gown. Stand-out piece.',
+    { id: 2, name: 'Deluxe', price: 'GHS 7,000 - GHS 9,000', popular: true,
+      desc: 'Heavily beaded or custom-printed thanksgiving gown. Stand-out piece. 3 fittings included.',
       images: []
     },
   ],

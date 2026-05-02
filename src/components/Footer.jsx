@@ -48,7 +48,6 @@ const Footer = () => {
 
   const socials = [
     { icon: <InstagramIcon className='h-5 w-5' />, label: 'Instagram', href: 'https://instagram.com/angelahayford_' },
-    { icon: <FacebookIcon className='h-5 w-5' />, label: 'Facebook', href: 'https://facebook.com/angelahayford' },
     { icon: <TikTokIcon className='h-5 w-5' />, label: 'TikTok', href: 'https://tiktok.com/@angela.hayford' },
     { icon: <Mail className='h-5 w-5' />, label: 'Email', href: 'mailto:angelahhayford@gmail.com' },
   ]
