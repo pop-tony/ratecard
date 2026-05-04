@@ -91,20 +91,20 @@ const PRICING_DATA = {
     },
   ],
   engagement: [
-    { id: 1, name: 'Kente Minimal Beadwork', price: 'GHS 6,000', popular: false,
-      desc: 'Modern kente gown with light bead accents. Excludes kente fabric.',
+    { id: 1, name: 'Kente Minimal Beadwork', price: 'GHS 6,000 - GHS 7,000', popular: false,
+      desc: 'Modern kente gown with light bead accents. Excludes kente fabric. 3 fittings.', 
       images: [assets.engagement]
     },
-    { id: 2, name: 'Classic Kente Gown', price: 'GHS 8,500', popular: false,
-      desc: 'Traditional kente silhouette with corset bodice. Excludes kente fabric.',
+    { id: 2, name: 'Classic Kente Gown', price: 'GHS 8,500 - GHS 10,000', popular: false,
+      desc: 'Traditional kente silhouette with corset bodice. Excludes kente fabric. 3 fittings.', 
       images: [assets.engagement1]
     },
-    { id: 3, name: 'Kente Luxe Beadwork', price: 'GHS 10,000', popular: true,
-      desc: 'Kente + heavy beadwork and stones. Red carpet ready. Excludes kente fabric.',
+    { id: 3, name: 'Kente Luxe Beadwork', price: 'GHS 10,000 - GHS 15,000', popular: true,
+      desc: 'Kente + heavy beadwork and stones. Red carpet ready. Excludes kente fabric. 4 fittings.', 
       images: [assets.engagement2]
     },
-    { id: 4, name: 'Kente Deluxe Beadwork', price: 'GHS 15,000', popular: false,
-      desc: 'Couture kente with 3D beadwork, crystals, and custom motifs. Excludes kente fabric.',
+    { id: 4, name: 'Kente Deluxe Beadwork', price: 'GHS 15,000 - GHS 20,000', popular: false,
+      desc: 'Couture kente with 3D beadwork, crystals, and custom motifs. Excludes kente fabric. 5 fittings.', 
       images: [assets.engagement3]
     },
   ],
@@ -125,31 +125,23 @@ const PRICING_DATA = {
       desc: 'Statement shower look with feathers, pearls, or custom embroidery. 3 fittings included.', 
       images: [assets.reception3] 
     },
-    { id: 5, name: 'Luxe reception dress', price: 'GHS 13,000 - GHS 17,000', popular: false,
+    { id: 6, name: 'Luxe reception dress', price: 'GHS 13,000 - GHS 17,000', popular: false,
       desc: 'Statement shower look with feathers, pearls, or custom embroidery. 3 fittings included.', 
       images: [assets.reception4] 
     },
-    { id: 6, name: 'Luxe reception dress', price: 'GHS 13,000 - GHS 17,000', popular: false,
+    { id: 7, name: 'Deluxe reception dress', price: 'GHS 17,000', popular: false,
       desc: 'Statement shower look with feathers, pearls, or custom embroidery. 3 fittings included.', 
-      images: [] 
-    },
-    { id: 7, name: 'Deluxe reception dress with luxury lace', price: 'GHS 17,000', popular: false,
-      desc: 'Statement shower look with feathers, pearls, or custom embroidery. 3 fittings included.', 
-      images: [] 
+      images: [assets.reception2] 
     },
     { id: 8, name: 'Short Custom hand beaded reception dress', price: 'GHS 15,000 - GHS 20,000', popular: false,
       desc: 'Statement shower look with feathers, pearls, or custom embroidery. 3 fittings included.', 
-      images: [] 
+      images: [assets.reception1] 
     },
     { id: 9, name: 'Long Custom hand beaded reception dress', price: 'GHS 25,000 - GHS 30,000', popular: false,
       desc: 'Statement shower look with feathers, pearls, or custom embroidery. 3 fittings included.', 
-      images: [] 
+      images: [assets.reception] 
     },
-    { id: 10, name: 'Deluxe reception dress', price: 'GHS 20,000 - GHS 30,000', popular: false,
-      desc: 'Statement shower look with feathers, pearls, or custom embroidery. 3 fittings included.', 
-      images: [] 
-    }
-  ],
+ ],
 }
 
 const TABS = [
