@@ -19,6 +19,20 @@ import reception from './reception.jpg'
 import wedding from './wedding.jpg'
 import kentey from './kentey.jpg'
 import thanksgiving from './thanksgiving.jpg'
+import thanksgiving1 from './thanksgiving1.jpg'
+import thanksgiving2 from './thanksgiving2.jpg'
+import reception1 from './reception1.jpg'
+import reception2 from './reception2.jpg'
+import reception3 from './reception3.jpeg'
+import reception4 from './reception4.png'
+import wedding1 from './wedding1.jpeg'
+import wedding2 from './wedding2.jpeg'
+import wedding3 from './wedding5.jpeg'
+import wedding4 from './wedding4.jpeg'
+import engagement from './engagement.jpeg'
+import engagement1 from './engagement4.png'
+import engagement2 from './engagement2.png'
+import engagement3 from './engagement3.png'
 
 const assets = {
     thanksgiving,
@@ -40,6 +54,20 @@ const assets = {
     logo,
     search_icon,
     arrow_icon,
+    wedding1,
+    wedding2,
+    wedding3,
+    wedding4,
+    engagement,
+    engagement1,
+    engagement2,
+    engagement3,
+    reception1,
+    reception2,
+    reception3,
+    reception4,
+    thanksgiving1,
+    thanksgiving2,
 }
 
 export default assets;
