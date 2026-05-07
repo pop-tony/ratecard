@@ -74,8 +74,8 @@ const TABS = [
   { key: 'wedding', label: 'Wedding Gowns' },
   { key: 'bridal', label: 'Bridal Shower' },
   { key: 'thanksgiving', label: 'Thanksgiving' },
-  { key: 'reception', label: 'Reception' },
-  { key: 'engagement', label: 'Engagement' },
+  { key: 'reception', label: 'Reception/Evening Dress' },
+  { key: 'engagement', label: 'Kente Gown' },
 ]
 
 const TERMS = [

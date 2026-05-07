@@ -23,133 +23,112 @@ const PRICING_DATA = {
   wedding: [
     { id: 1, name: 'Luxe Court Gown', price: 'GHS 6,000', popular: false,
       desc: 'Classic court train silhouette with premium satin. Includes basic beadwork, 3 fittings, and custom bustle.', 
-      images: [assets.wedding]
     },
     { id: 2, name: 'Deluxe Court Gown', price: 'GHS 9,000', popular: false,
       desc: 'Extended court train with lace appliqué and crystal detailing. 4 fittings included.', 
-      images: [assets.wedding1]
+
     },
     { id: 3, name: 'Classic Plain Gown', price: 'GHS 8,000', popular: false,
       desc: 'Minimalist crepe gown with clean lines. Perfect for modern brides. 3 fittings.', 
-      images: [assets.wedding2]
+
     },
     { id: 4, name: 'Luxe Plain Gown', price: 'GHS 10,000 - GHS 14,000', popular: false,
       desc: 'Structured mikado with hidden corsetry. Sculptural and elegant. 4 fittings.', 
-      images: [assets.wedding3]
+
     },
     { id: 5, name: 'Deluxe Plain Gown', price: 'GHS 14,000 - GHS 20,000', popular: true,
       desc: 'Two looks in one. Detachable overskirt + fitted base gown. 5 fittings included.', 
-      images: [assets.wedding4]
+
     },
-    { id: 10, name: 'Normal beaded lace Gown', price: 'GHS 9,500 - GHS 13,000', popular: false,
+    { id: 6, name: 'Normal beaded lace Gown', price: 'GHS 9,500 - GHS 13,000', popular: false,
       desc: 'Bespoke ball gown with hand-draped bodice, 3D florals, and chapel train. 8 fittings.', 
-      images: []
     },
-    { id: 6, name: 'Classic Lace Gown', price: 'GHS 14,000 - GHS 17,000', popular: false,
+    { id: 7, name: 'Classic Lace Gown', price: 'GHS 14,000 - GHS 17,000', popular: false,
       desc: 'All-over Chantilly lace with illusion back. Timeless romantic feel. 4 fittings.', 
-      images: []
     },
-    { id: 7, name: 'Luxe Lace Gown', price: 'GHS 17,000 - GHS 20,000', popular: false,
+    { id: 8, name: 'Luxe Lace Gown', price: 'GHS 17,000 - GHS 20,000', popular: false,
       desc: 'Hand-beaded French lace with cathedral train. Heirloom quality. 5 fittings.', 
-      images: []
     },
-    { id: 8, name: 'Deluxe Lace Gown', price: 'GHS 20,000 - GHS 35,000', popular: false,
+    { id: 9, name: 'Deluxe Lace Gown', price: 'GHS 20,000 - GHS 35,000', popular: false,
       desc: 'Couture lace with custom embroidery and Swarovski crystals. 6 fittings.', 
-      images: []
     },
-    { id: 9, name: 'Luxe Ball Gown', price: 'GHS 25,000 - GHS 30,000', popular: false,
+    { id: 10, name: 'Luxe Ball Gown', price: 'GHS 25,000 - GHS 30,000', popular: false,
       desc: 'Full ball gown with layered tulle and structured bodice. Princess moment. 6 fittings.', 
-      images: []
     },
-    { id: 10, name: 'Deluxe Ball Gown', price: 'GHS 35,000 - GHS 45,000', popular: false,
+    { id: 11, name: 'Deluxe Ball Gown', price: 'GHS 35,000 - GHS 45,000', popular: false,
       desc: 'Bespoke ball gown with hand-draped bodice, 3D florals, and chapel train. 8 fittings.', 
-      images: []
     },
-    { id: 10, name: 'Custom beaded Gown', price: 'GHS 45,000 - GHS 50,000', popular: false,
+    { id: 12, name: 'Custom beaded Gown', price: 'GHS 45,000 - GHS 50,000', popular: false,
       desc: 'Bespoke ball gown with hand-draped bodice, 3D florals, and chapel train. 8 fittings.',
-      images: []
     },
   ],
   bridal: [
     { id: 1, name: 'Luxe', price: 'GHS 2,500 - GHS 3,500', popular: false,
       desc: 'Chic mini or midi dress for your bridal shower. Custom fit, luxe fabric. 2 fittings included.',
-      images: []
     },
     { id: 2, name: 'Deluxe', price: 'GHS 4,500 - GHS 6,500', popular: false,
       desc: 'Statement shower look with feathers, pearls, or custom embroidery. 3 fittings included.',
-      images: []
     },
   ],
   thanksgiving: [
     { id: 1, name: 'Luxe', price: 'GHS 4,000 - GHS 6,500', popular: false,
       desc: 'Elegant thanksgiving dress in Ankara, lace, or crepe. Church-ready. 2 fittings included.',
-      images: [assets.thanksgiving]
     },
     { id: 2, name: 'Deluxe', price: 'GHS 7,000 - GHS 9,000', popular: true,
       desc: 'Heavily beaded or custom-printed thanksgiving gown. Stand-out piece. 3 fittings included.',
-      images: [assets.thanksgiving1, assets.thanksgiving2]
     },
   ],
   engagement: [
     { id: 1, name: 'Kente Minimal Beadwork', price: 'GHS 6,000 - GHS 7,000', popular: false,
       desc: 'Modern kente gown with light bead accents. Excludes kente fabric. 3 fittings.', 
-      images: [assets.engagement]
     },
     { id: 2, name: 'Classic Kente Gown', price: 'GHS 8,500 - GHS 10,000', popular: false,
       desc: 'Traditional kente silhouette with corset bodice. Excludes kente fabric. 3 fittings.', 
-      images: [assets.engagement1]
+
     },
     { id: 3, name: 'Kente Luxe Beadwork', price: 'GHS 10,000 - GHS 15,000', popular: true,
       desc: 'Kente + heavy beadwork and stones. Red carpet ready. Excludes kente fabric. 4 fittings.', 
-      images: [assets.engagement2]
+
     },
     { id: 4, name: 'Kente Deluxe Beadwork', price: 'GHS 15,000 - GHS 20,000', popular: false,
       desc: 'Couture kente with 3D beadwork, crystals, and custom motifs. Excludes kente fabric. 5 fittings.', 
-      images: [assets.engagement3]
+
     },
   ],
   reception: [
     { id: 1, name: 'Plain Reception gown', price: 'GHS 5,000', popular: false,
       desc: 'Chic mini or midi dress for your bridal shower. Custom fit, luxe fabric. 2 fittings included.', 
-      images: [assets.reception] 
     },
     { id: 2, name: 'Short Reception dress wtih normal beaded lace', price: 'GHS 6,500', popular: false,
-      desc: 'Statement shower look with feathers, pearls, or custom embroidery. 3 fittings included.', 
-      images: [assets.reception1] 
+      desc: 'Statement shower look with feathers, pearls, or custom embroidery. 3 fittings included.',  
     },
     { id: 3, name: 'Long reception dress with normal beaded lace', price: 'GHS 9,000', popular: false,
-      desc: 'Statement shower look with feathers, pearls, or custom embroidery. 3 fittings included.', 
-      images: [assets.reception2] 
+      desc: 'Statement shower look with feathers, pearls, or custom embroidery. 3 fittings included.',  
     },
     { id: 4, name: 'Short Reception dress with luxury lace', price: 'GHS 9,000', popular: false,
-      desc: 'Statement shower look with feathers, pearls, or custom embroidery. 3 fittings included.', 
-      images: [assets.reception3] 
+      desc: 'Statement shower look with feathers, pearls, or custom embroidery. 3 fittings included.',  
     },
     { id: 6, name: 'Luxe reception dress', price: 'GHS 13,000 - GHS 17,000', popular: false,
-      desc: 'Statement shower look with feathers, pearls, or custom embroidery. 3 fittings included.', 
-      images: [assets.reception4] 
+      desc: 'Statement shower look with feathers, pearls, or custom embroidery. 3 fittings included.',  
     },
     { id: 7, name: 'Deluxe reception dress', price: 'GHS 17,000', popular: false,
-      desc: 'Statement shower look with feathers, pearls, or custom embroidery. 3 fittings included.', 
-      images: [assets.reception2] 
+      desc: 'Statement shower look with feathers, pearls, or custom embroidery. 3 fittings included.',  
     },
     { id: 8, name: 'Short Custom hand beaded reception dress', price: 'GHS 15,000 - GHS 20,000', popular: false,
-      desc: 'Statement shower look with feathers, pearls, or custom embroidery. 3 fittings included.', 
-      images: [assets.reception1] 
+      desc: 'Statement shower look with feathers, pearls, or custom embroidery. 3 fittings included.',  
     },
     { id: 9, name: 'Long Custom hand beaded reception dress', price: 'GHS 25,000 - GHS 30,000', popular: false,
       desc: 'Statement shower look with feathers, pearls, or custom embroidery. 3 fittings included.', 
-      images: [assets.reception] 
     },
  ],
 }
 
 const TABS = [
-  { key: 'wedding', label: 'Wedding Gowns' },
-  { key: 'bridal', label: 'Bridal Shower' },
-  { key: 'thanksgiving', label: 'Thanksgiving' },
-  { key: 'reception', label: 'Reception' },
-  { key: 'engagement', label: 'Engagement' },
+  { key: 'wedding', label: 'Wedding Gowns', images: [assets.wedding1, assets.wedding2, assets.wedding3, assets.wedding4] },
+  { key: 'bridal', label: 'Bridal Shower', images: [assets.engagement, assets.engagement3] },
+  { key: 'thanksgiving', label: 'Thanksgiving', images: [assets.thanksgiving1, assets.thanksgiving, assets.thanksgiving2] },
+  { key: 'reception', label: 'Reception/Evening Dress', images: [assets.reception1, assets.reception, assets.reception2, assets.reception3, assets.reception4] },
+  { key: 'engagement', label: 'Kente Gown', images: [assets.engagement1, assets.engagement2] },
 ]
 
 const PricingSection = () => {
@@ -158,6 +137,7 @@ const PricingSection = () => {
   const [step, setStep] = useState('info')
   const [clientData, setClientData] = useState({ name: '', email: '', phone: '', eDate: '04/04/2026', wDate: '04/04/2026', bAddress: 'Home' })
   const [activeImgIdx, setActiveImgIdx] = useState(0)
+  const [showGallerry, setShowGalleryy] = useState(false);
 
   const [paymentSuccess, setPaymentSuccess] = useState(false)
 
@@ -290,6 +270,13 @@ const PricingSection = () => {
           </div>
         </motion.div>
 
+        <button
+          onClick={()=>setShowGalleryy(!showGallerry)}
+          className='-mr-2 -mt-2 rounded-lg p-2 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-white'
+        >
+          View Gallery
+        </button>
+
         <motion.div
           key={activeTab}
           initial='hidden'
@@ -360,6 +347,89 @@ const PricingSection = () => {
       </motion.section>
 
       <AnimatePresence>
+
+        {showGallerry && (
+          <>
+
+            <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={()=>setShowGalleryy(false)}
+            className='fixed inset-0 z-50 bg-black/60 backdrop-blur-sm'
+            />
+
+            <motion.div
+              initial={{ opacity: 0, y: '100%' }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: '100%' }}
+              transition={{ type: 'spring', bounce: 0.15, duration: 0.5 }}
+              className='fixed inset-x-0 bottom-0 z-50 sm:inset-auto sm:left-1/2 sm:top-1/2 w-fit sm:-translate-x-1/2 sm:-translate-y-1/2'
+            >
+
+              <div className='p-4 max-h- overflow-y-auto rounded-t-3xl border border-zinc-200 bg-white shadow-2xl dark:border-white/10 dark:bg-zinc-900 sm:rounded-3xl'>
+              
+                {TABS.map(tab=>(
+                  activeTab === tab.key && (
+                    <div>
+                      <button
+                        onClick={()=>setShowGalleryy(false)}
+                        className='-mr-2 -mt-2 m-3 cursor-pointer rounded-lg p-2 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-white'
+                      >
+                        <X className='h-5 w-5' />
+                      </button>
+                      {tab.images?.length > 0? (
+                  
+                        <div className='mt-5 sm:mt-6'>
+                        
+                          <div className='aspect-[4/3] overflow-hidden rounded-xl bg-zinc-100 dark:bg-white/5 sm:rounded-2xl'>
+                            <img
+                              src={tab.images[activeImgIdx]}
+                              alt={tab.label}
+                              className='h-full w-full object-cover'
+                            />
+                            
+                          </div>
+                          {tab.images.length > 1 && (
+                            <div className='mt-3 flex gap-2 overflow-x-auto pb-1 scrollbar-hide'>
+                              {tab.images.map((img, idx) => (
+                                <button
+                                  key={idx}
+                                  onClick={() => setActiveImgIdx(idx)}
+                                  className={`h-14 w-14 shrink-0 overflow-hidden rounded-lg border-2 transition sm:h-16 sm:w-16 ${
+                                    activeImgIdx === idx
+                                      ? 'border-rose-500'
+                                      : 'border-transparent opacity-60 hover:opacity-100'
+                                  }`}
+                                >
+                                  <img src={img} alt='' className='h-full w-full object-cover' />
+                                </button>
+                              ))}
+                            </div>
+                          )}
+                          
+                        </div>
+                      
+                      ) 
+                      : 
+                      (
+                      <div className='flex aspect-[4/3] flex-col items-center justify-center rounded-xl border-2 border-dashed border-zinc-300 bg-zinc-50 text-zinc-400 dark:border-white/10 dark:bg-white/5 dark:text-zinc-500 sm:rounded-2xl'>
+                        <ImageIcon className='h-8 w-8 sm:h-10 sm:w-10' />
+                        <p className='mt-2 text-xs sm:text-sm'>Add package images</p>
+                      </div>
+                      )
+                      }
+
+                    </div>
+                  )
+                ))}
+              
+              </div>
+            </motion.div>
+                
+          </>
+        )}
+          
         {selectedPackage && (
           <>
             <motion.div
@@ -403,45 +473,9 @@ const PricingSection = () => {
                       </button>
                     </div>
 
-                    <div className='mt-5 sm:mt-6'>
-                      {selectedPackage.images?.length > 0? (
-                        <>
-                          <div className='aspect-[4/3] overflow-hidden rounded-xl bg-zinc-100 dark:bg-white/5 sm:rounded-2xl'>
-                            <img
-                              src={selectedPackage.images[activeImgIdx]}
-                              alt={selectedPackage.name}
-                              className='h-full w-full object-cover'
-                            />
-                          </div>
-                          {selectedPackage.images.length > 1 && (
-                            <div className='mt-3 flex gap-2 overflow-x-auto pb-1 scrollbar-hide'>
-                              {selectedPackage.images.map((img, idx) => (
-                                <button
-                                  key={idx}
-                                  onClick={() => setActiveImgIdx(idx)}
-                                  className={`h-14 w-14 shrink-0 overflow-hidden rounded-lg border-2 transition sm:h-16 sm:w-16 ${
-                                    activeImgIdx === idx
-                                     ? 'border-rose-500'
-                                      : 'border-transparent opacity-60 hover:opacity-100'
-                                  }`}
-                                >
-                                  <img src={img} alt='' className='h-full w-full object-cover' />
-                                </button>
-                              ))}
-                            </div>
-                          )}
-                        </>
-                      ) : (
-                        <div className='flex aspect-[4/3] flex-col items-center justify-center rounded-xl border-2 border-dashed border-zinc-300 bg-zinc-50 text-zinc-400 dark:border-white/10 dark:bg-white/5 dark:text-zinc-500 sm:rounded-2xl'>
-                          <ImageIcon className='h-8 w-8 sm:h-10 sm:w-10' />
-                          <p className='mt-2 text-xs sm:text-sm'>Add package images</p>
-                        </div>
-                      )}
-                    </div>
-
-                    <div className='mt-5 rounded-xl border border-zinc-200 bg-zinc-50 p-4 text-sm leading-relaxed text-zinc-700 dark:border-white/10 dark:bg-white/5 dark:text-zinc-300 sm:mt-6 sm:rounded-2xl sm:p-5'>
+                    {/*<div className='mt-5 rounded-xl border border-zinc-200 bg-zinc-50 p-4 text-sm leading-relaxed text-zinc-700 dark:border-white/10 dark:bg-white/5 dark:text-zinc-300 sm:mt-6 sm:rounded-2xl sm:p-5'>
                       {selectedPackage.desc}
-                    </div>
+                    </div>*/}
 
                     <div className='mt-5 grid grid-cols-3 gap-2 text-center text-xs sm:mt-6 sm:gap-3 sm:text-sm'>
                       <div className='rounded-lg border border-zinc-200 bg-white p-2.5 dark:border-white/10 dark:bg-white/5 sm:rounded-xl sm:p-3'>
