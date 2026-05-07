@@ -30,9 +30,9 @@ import wedding2 from './wedding2.jpeg'
 import wedding3 from './wedding5.jpeg'
 import wedding4 from './wedding4.jpeg'
 import engagement from './engagement.jpeg'
-import engagement1 from './engagement4.png'
-import engagement2 from './engagement2.png'
-import engagement3 from './engagement3.png'
+import engagement1 from './engagement1.PNG'
+import engagement2 from './engagement2.PNG'
+import engagement3 from './engagement3.PNG'
 
 const assets = {
     thanksgiving,
