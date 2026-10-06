@@ -36,6 +36,7 @@ const assets = {
     close,
     right_arrow,
     menu_black,
+    menu_icon,
     help_icon,
     logo,
     search_icon,

@@ -160,9 +160,9 @@ const ConsultationCard = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: '100%' }}
               transition={{ type: 'spring', bounce: 0.15, duration: 0.5 }}
-              className='fixed inset-x-0 bottom-0 z-50 sm:inset-auto sm:left-1/2 sm:top-1/2 sm:w-[calc(100%-2rem)] sm:max-w-lg sm:-translate-x-1/2 sm:-translate-y-1/2'
+              className='fixed inset-x-0 bottom-0 z-50 sm:inset-x-4 sm:bottom-4 sm:left-1/2 sm:top-4 sm:w-[calc(100%-2rem)] sm:max-w-lg sm:-translate-x-1/2'
             >
-              <div className='max-h- overflow-y-auto rounded-t-3xl border border-zinc-200 bg-white shadow-2xl dark:border-white/10 dark:bg-zinc-900 sm:max-h- sm:rounded-3xl'>
+              <div className='max-h-[calc(100dvh-1rem)] overflow-y-auto rounded-t-3xl border border-zinc-200 bg-white shadow-2xl dark:border-white/10 dark:bg-zinc-900 sm:max-h-[calc(100dvh-2rem)] sm:rounded-3xl'>
 
                 {/* Step 1: Details */}
                 {step === 'details' && (
@@ -269,7 +269,7 @@ const ConsultationCard = () => {
                             initial={{ opacity: 0, scale: 0.96, y: 8 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.96, y: 8 }}
-                            className='fixed inset-x-4 top-1/2 z-[60] -translate-y-1/2 rounded-2xl border border-zinc-200 bg-white p-5 shadow-2xl dark:border-white/10 dark:bg-zinc-900 sm:left-1/2 sm:max-w-sm sm:-translate-x-1/2 sm:p-6'
+                            className='fixed inset-x-4 top-1/2 z-[60] max-h-[calc(100dvh-2rem)] -translate-y-1/2 overflow-y-auto rounded-2xl border border-zinc-200 bg-white p-5 shadow-2xl dark:border-white/10 dark:bg-zinc-900 sm:left-1/2 sm:max-w-sm sm:-translate-x-1/2 sm:p-6'
                           >
                             <div className='flex items-start justify-between gap-4'>
                               <div>

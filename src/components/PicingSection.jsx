@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from "motion/react"
 import { Check, X, ArrowLeft, CreditCard, CheckCircle2, Package, Image as ImageIcon } from 'lucide-react'
+import assets from '../assets/assets'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 16 },
@@ -20,7 +21,7 @@ const PRICING_DATA = {
   wedding: [
     { id: 1, name: 'Luxe Court Wedding Dress', price: 'GHS 6,000–7,000', popular: false,
       desc: 'A luxe court wedding dress. Rates are fabric inclusive and may differ for plus size.',
-      images: ['/images/luxe-court-1.jpg', '/images/luxe-court-2.jpg']
+      images: [assets.firstPage, assets.wedding]
     },
     { id: 2, name: 'Deluxe Court Wedding Dress', price: 'GHS 9,000–12,000', popular: false,
       desc: 'A deluxe court wedding dress. Rates are fabric inclusive and may differ for plus size.',
@@ -304,9 +305,9 @@ const PricingSection = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: '100%' }}
               transition={{ type: 'spring', bounce: 0.15, duration: 0.5 }}
-              className='fixed inset-x-0 bottom-0 z-50 sm:inset-auto sm:left-1/2 sm:top-1/2 sm:w-[calc(100%-2rem)] sm:max-w-2xl sm:-translate-x-1/2 sm:-translate-y-1/2'
+              className='fixed inset-x-0 bottom-0 z-50 sm:inset-x-4 sm:bottom-4 sm:left-1/2 sm:top-4 sm:w-[calc(100%-2rem)] sm:max-w-2xl sm:-translate-x-1/2'
             >
-              <div className='max-h- overflow-y-auto rounded-t-3xl border border-zinc-200 bg-white shadow-2xl dark:border-white/10 dark:bg-zinc-900 sm:max-h- sm:rounded-3xl'>
+              <div className='max-h-[calc(100dvh-1rem)] overflow-y-auto rounded-t-3xl border border-zinc-200 bg-white shadow-2xl dark:border-white/10 dark:bg-zinc-900 sm:max-h-[calc(100dvh-2rem)] sm:rounded-3xl'>
 
                 {/* Step 1: Info + Images */}
                 {step === 'info' && (
