@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from "motion/react"
-import { Sparkles, Check, X, ArrowLeft, CreditCard, CheckCircle2, Package, Image as ImageIcon } from 'lucide-react'
+import { Check, X, ArrowLeft, CreditCard, CheckCircle2, Package, Image as ImageIcon } from 'lucide-react'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 16 },
@@ -18,82 +18,112 @@ const fadeUp = {
 // Add desc + images to each package. Drop your image URLs in images: []
 const PRICING_DATA = {
   wedding: [
-    { id: 1, name: 'Luxe Court', price: 'GHS 6,000', popular: false,
-      desc: 'Classic court train silhouette with premium satin. Includes basic beadwork, 3 fittings, and custom bustle.',
+    { id: 1, name: 'Luxe Court Wedding Dress', price: 'GHS 6,000–7,000', popular: false,
+      desc: 'A luxe court wedding dress. Rates are fabric inclusive and may differ for plus size.',
       images: ['/images/luxe-court-1.jpg', '/images/luxe-court-2.jpg']
     },
-    { id: 2, name: 'Deluxe Court', price: 'GHS 9,000', popular: false,
-      desc: 'Extended court train with lace appliqué and crystal detailing. 4 fittings included.',
+    { id: 2, name: 'Deluxe Court Wedding Dress', price: 'GHS 9,000–12,000', popular: false,
+      desc: 'A deluxe court wedding dress. Rates are fabric inclusive and may differ for plus size.',
       images: []
     },
-    { id: 3, name: 'Classic Plain', price: 'GHS 8,000', popular: false,
-      desc: 'Minimalist crepe gown with clean lines. Perfect for modern brides. 3 fittings.',
+    { id: 3, name: 'Classic Plain Gown', price: 'GHS 8,000–10,000', popular: false,
+      desc: 'A classic plain wedding gown. Rates are fabric inclusive and may differ for plus size.',
       images: []
     },
-    { id: 4, name: 'Luxe Plain', price: 'GHS 10,000', popular: false,
-      desc: 'Structured mikado with hidden corsetry. Sculptural and elegant. 4 fittings.',
+    { id: 4, name: 'Luxe Plain Gown', price: 'GHS 10,000–15,000', popular: false,
+      desc: 'A luxe plain wedding gown. Rates are fabric inclusive and may differ for plus size.',
       images: []
     },
-    { id: 5, name: 'Deluxe Plain + Detachable', price: 'GHS 14,000', popular: true,
-      desc: 'Two looks in one. Detachable overskirt + fitted base gown. 5 fittings included.',
+    { id: 5, name: 'Deluxe Plain Gown', price: 'GHS 14,000–20,000', popular: true,
+      desc: 'A deluxe plain wedding gown. Rates are fabric inclusive and may differ for plus size.',
       images: []
     },
-    { id: 6, name: 'Classic Lace', price: 'GHS 14,000', popular: false,
-      desc: 'All-over Chantilly lace with illusion back. Timeless romantic feel. 4 fittings.',
+    { id: 6, name: 'Normal Beaded Lace Gown', price: 'GHS 10,000–15,000', popular: false,
+      desc: 'A normal beaded lace wedding gown. Rates are fabric inclusive and may differ for plus size.',
       images: []
     },
-    { id: 7, name: 'Luxe Lace', price: 'GHS 17,000', popular: false,
-      desc: 'Hand-beaded French lace with cathedral train. Heirloom quality. 5 fittings.',
+    { id: 7, name: 'Classic Lace Gown', price: 'GHS 15,000–20,000', popular: false,
+      desc: 'A classic lace wedding gown. Rates are fabric inclusive and may differ for plus size.',
       images: []
     },
-    { id: 8, name: 'Deluxe Lace', price: 'GHS 20,000', popular: false,
-      desc: 'Couture lace with custom embroidery and Swarovski crystals. 6 fittings.',
+    { id: 8, name: 'Luxe Lace Gown', price: 'GHS 20,000–25,000', popular: false,
+      desc: 'A luxe lace wedding gown. Rates are fabric inclusive and may differ for plus size.',
       images: []
     },
-    { id: 9, name: 'Luxe Ball Gown', price: 'GHS 25,000', popular: false,
-      desc: 'Full ball gown with layered tulle and structured bodice. Princess moment. 6 fittings.',
+    { id: 9, name: 'Deluxe Lace Gown', price: 'GHS 30,000–40,000', popular: false,
+      desc: 'A deluxe lace wedding gown. Rates are fabric inclusive and may differ for plus size.',
       images: []
     },
-    { id: 10, name: 'Deluxe Ball Gown', price: 'GHS 35,000', popular: false,
-      desc: 'Bespoke ball gown with hand-draped bodice, 3D florals, and chapel train. 8 fittings.',
+    { id: 10, name: 'Classic Ball Gown', price: 'GHS 10,000–15,000', popular: false,
+      desc: 'A classic ball gown. Rates are fabric inclusive and may differ for plus size.',
+      images: []
+    },
+    { id: 11, name: 'Luxe Ball Gown', price: 'GHS 25,000–35,000', popular: false,
+      desc: 'A luxe ball gown. Rates are fabric inclusive and may differ for plus size.',
+      images: []
+    },
+    { id: 12, name: 'Deluxe Ball Gown', price: 'GHS 35,000–45,000', popular: false,
+      desc: 'A deluxe ball gown. Rates are fabric inclusive and may differ for plus size.',
+      images: []
+    },
+    { id: 13, name: 'Custom Hand-Beaded Gown', price: 'GHS 45,000–55,000', popular: false,
+      desc: 'A custom hand-beaded wedding gown. Rates are fabric inclusive and may differ for plus size.',
       images: []
     },
   ],
+  reception: [
+    { id: 1, name: 'Plain Reception Gown', price: 'GHS 5,000–7,000', popular: false,
+      desc: 'A plain reception gown. Rates may differ for plus size.', images: [] },
+    { id: 2, name: 'Short Reception Dress with Normal Beaded Lace', price: 'GHS 6,500–8,000', popular: false,
+      desc: 'Short reception dress with normal beaded lace. Rates may differ for plus size.', images: [] },
+    { id: 3, name: 'Long Reception Dress with Normal Beaded Lace', price: 'GHS 9,000–12,000', popular: false,
+      desc: 'Long reception dress with normal beaded lace. Rates may differ for plus size.', images: [] },
+    { id: 4, name: 'Short Reception Dress with Luxury Lace', price: 'GHS 9,500–15,000', popular: false,
+      desc: 'Short reception dress with luxury lace. Rates may differ for plus size.', images: [] },
+    { id: 5, name: 'Long Reception Dress with Luxury Lace', price: 'GHS 13,000–20,000', popular: false,
+      desc: 'Long reception dress with luxury lace. Rates may differ for plus size.', images: [] },
+    { id: 6, name: 'Deluxe Reception Dress with Luxury Lace', price: 'GHS 17,000–25,000', popular: true,
+      desc: 'Deluxe reception dress with luxury lace. Rates may differ for plus size.', images: [] },
+    { id: 7, name: 'Custom Hand-Beaded Reception Dress (Short)', price: 'GHS 15,000–20,000', popular: false,
+      desc: 'Custom short hand-beaded reception dress. Rates may differ for plus size.', images: [] },
+    { id: 8, name: 'Custom Hand-Beaded Reception Dress (Long)', price: 'GHS 25,000–30,000', popular: false,
+      desc: 'Custom long hand-beaded reception dress. Rates may differ for plus size.', images: [] },
+  ],
   bridal: [
-    { id: 1, name: 'Luxe', price: 'GHS 2,500', popular: false,
-      desc: 'Chic mini or midi dress for your bridal shower. Custom fit, luxe fabric.',
+    { id: 1, name: 'Luxe Bridal Shower Dress', price: 'GHS 2,500–5,000', popular: false,
+      desc: 'A luxe bridal shower dress. Rates may differ for plus size.',
       images: []
     },
-    { id: 2, name: 'Deluxe', price: 'GHS 4,500', popular: false,
-      desc: 'Statement shower look with feathers, pearls, or custom embroidery.',
+    { id: 2, name: 'Deluxe Bridal Shower Dress', price: 'GHS 4,500–7,500', popular: false,
+      desc: 'A deluxe bridal shower dress. Rates may differ for plus size.',
       images: []
     },
   ],
   thanksgiving: [
-    { id: 1, name: 'Luxe', price: 'GHS 4,500', popular: false,
-      desc: 'Elegant thanksgiving dress in Ankara, lace, or crepe. Church-ready.',
+    { id: 1, name: 'Luxe Thanksgiving Dress', price: 'GHS 4,500–6,000', popular: false,
+      desc: 'A luxe thanksgiving dress. Rates may differ for plus size.',
       images: []
     },
-    { id: 2, name: 'Deluxe', price: 'GHS 7,000', popular: true,
-      desc: 'Heavily beaded or custom-printed thanksgiving gown. Stand-out piece.',
+    { id: 2, name: 'Deluxe Thanksgiving Dress', price: 'GHS 7,000–9,000', popular: true,
+      desc: 'A deluxe thanksgiving dress. Rates may differ for plus size.',
       images: []
     },
   ],
   engagement: [
-    { id: 1, name: 'Kente Minimal Beadwork', price: 'GHS 6,000', popular: false,
-      desc: 'Modern kente gown with light bead accents. Excludes kente fabric.',
+    { id: 1, name: 'Simple Engagement Gown', price: 'GHS 6,000–7,500', popular: false,
+      desc: 'A simple engagement or traditional gown. Price does not include fabric and may differ for plus size.',
       images: []
     },
-    { id: 2, name: 'Classic Kente Gown', price: 'GHS 8,500', popular: false,
-      desc: 'Traditional kente silhouette with corset bodice. Excludes kente fabric.',
+    { id: 2, name: 'Classic Engagement Gown', price: 'GHS 8,500–9,500', popular: false,
+      desc: 'A classic engagement or traditional gown. Price does not include fabric and may differ for plus size.',
       images: []
     },
-    { id: 3, name: 'Kente Luxe Beadwork', price: 'GHS 10,000', popular: true,
-      desc: 'Kente + heavy beadwork and stones. Red carpet ready. Excludes kente fabric.',
+    { id: 3, name: 'Luxe Engagement Gown', price: 'GHS 10,000–12,000', popular: true,
+      desc: 'A luxe engagement or traditional gown. Price does not include fabric and may differ for plus size.',
       images: []
     },
-    { id: 4, name: 'Kente Deluxe Beadwork', price: 'GHS 15,000', popular: false,
-      desc: 'Couture kente with 3D beadwork, crystals, and custom motifs. Excludes kente fabric.',
+    { id: 4, name: 'Deluxe Engagement Gown', price: 'GHS 15,000–18,000', popular: false,
+      desc: 'A deluxe engagement or traditional gown. Price does not include fabric and may differ for plus size.',
       images: []
     },
   ],
@@ -101,6 +131,7 @@ const PRICING_DATA = {
 
 const TABS = [
   { key: 'wedding', label: 'Wedding Gowns' },
+  { key: 'reception', label: 'Reception Dresses' },
   { key: 'bridal', label: 'Bridal Shower' },
   { key: 'thanksgiving', label: 'Thanksgiving' },
   { key: 'engagement', label: 'Engagement' },
@@ -211,21 +242,15 @@ const PricingSection = () => {
                   : 'border-zinc-200 bg-white shadow-sm hover:border-zinc-300 hover:shadow-md dark:border-white/10 dark:bg-zinc-900/40 dark:shadow-none dark:hover:border-white/20'
               }`}
             >
-              {tier.popular && (
-                <div className='absolute -top-2.5 left-1/2 -translate-x-1/2 flex items-center gap-1 rounded-full bg-gradient-to-r from-rose-500 to-amber-500 px-3 py-1 text- font-bold uppercase tracking-wide text-white shadow-lg shadow-rose-500/30 dark:text-zinc-900 sm:-top-3 sm:px-4 sm:py-1.5 sm:text-'>
-                  <Sparkles className='h-3 w-3 sm:h-3.5 sm:w-3.5' /> Most Popular
-                </div>
-              )}
-
               <div className='flex-1'>
-                <p className='text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 sm:text-sm'>
+                <p className='text-[11px] font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 sm:text-xs'>
                   {tier.name}
                 </p>
-                <div className='mt-2 flex items-baseline gap-1 sm:mt-3'>
-                  <span className='text-2xl font-black tracking-tight text-zinc-900 dark:text-white sm:text-3xl lg:text-4xl'>
+                <div className='mt-2 flex min-w-0 items-baseline gap-1 whitespace-nowrap sm:mt-3'>
+                  <span className='shrink-0 text-lg font-black tracking-tight text-zinc-900 dark:text-white sm:text-xl lg:text-2xl'>
                     {tier.price.split(' ')[1]}
                   </span>
-                  <span className='text-xs font-medium text-zinc-500 sm:text-sm'>
+                  <span className='shrink-0 text-xs font-medium text-zinc-500 sm:text-sm'>
                     {tier.price.split(' ')[0]}
                   </span>
                 </div>
@@ -254,7 +279,7 @@ const PricingSection = () => {
           className='mx-auto mt-12 grid max-w-4xl gap-3 text-xs sm:mt-16 sm:gap-4 sm:text-sm md:grid-cols-2'
         >
           <div className='rounded-xl border border-amber-300 bg-amber-50 p-4 text-amber-900 dark:border-amber-400/20 dark:bg-gradient-to-br dark:from-amber-500/10 dark:to-transparent dark:text-amber-200/90 sm:rounded-2xl sm:p-5'>
-            <span className='font-semibold text-amber-950 dark:text-amber-200'>Note:</span> Rates may differ for plus size. Engagement prices exclude kente fabric.
+            <span className='font-semibold text-amber-950 dark:text-amber-200'>Note:</span> Wedding dress rates are fabric inclusive. Engagement/traditional gown rates exclude fabric. Rates may differ for plus size.
           </div>
           <div className='rounded-xl border border-zinc-200 bg-zinc-50 p-4 text-zinc-700 dark:border-white/10 dark:bg-zinc-900/40 dark:text-zinc-300 sm:rounded-2xl sm:p-5'>
             <span className='font-semibold text-zinc-900 dark:text-white'>Veil:</span> Plain cathedral GHS 500. Custom veil with borders GHS 1,500–2,500.

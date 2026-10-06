@@ -8,7 +8,7 @@ const ClientIntakeForm = () => {
     { label: 'Full Name', type: 'text', span: 'md:col-span-2' },
     { label: 'Email Address', type: 'email' },
     { label: 'Emergency Number', type: 'tel' },
-    { label: 'Package Chosen', type: 'select', options: ['Wedding Gown', 'Thanksgiving', 'Bridal Shower', 'Engagement'], span: 'md:col-span-2' },
+    { label: 'Package Chosen', type: 'select', options: ['Wedding Dress', 'Reception Dress', 'Thanksgiving Dress', 'Bridal Shower Dress', 'Engagement / Traditional Gown'], span: 'md:col-span-2' },
     { label: 'Engagement Date', type: 'date' },
     { label: 'Wedding Date', type: 'date' },
     { label: 'Bridal Address', type: 'text', span: 'md:col-span-2' },

@@ -36,7 +36,7 @@ const Hero = () => {
           variants={fadeUp}
           className='bg-gradient-to-br from-white via-white to-zinc-400 bg-clip-text text-4xl font-black leading-tight tracking-tight text-transparent sm:text-5xl md:text-6xl lg:text-7xl'
         >
-          2026 Bridal <span className='bg-gradient-to-r from-rose-400 to-amber-400 bg-clip-text'>Ratecard</span>
+          2027 Bridal <span className='bg-gradient-to-r from-rose-400 to-amber-400 bg-clip-text'>Ratecard</span>
         </motion.h1>
 
         <motion.p

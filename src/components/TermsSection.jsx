@@ -6,20 +6,40 @@ const fadeUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }
 const TermsSection = () => {
   const terms = [
     {
-      title: 'Payment Policies',
-      content: '70% deposit due to secure the date upon agreement between Angela Hayford and Client. 30% balance due one week before collection. Payment validates booking.'
+      title: 'Consultation Policy',
+      content: 'Consultations guide the client on fit, colour, fabric choice and design. Clients should share style inspirations for custom garments. Consultations may be virtual or in person, and the GHS 1,000 fee is paid after the date and time are scheduled. A client may attend with a partner, family member or friend, limited to two accompanying persons. Consultation fees are non-refundable.'
     },
     {
-      title: 'Cancellation & Date Changes',
-      content: 'Cancelled 2 months or less before booked date: deposits refundable after 2 months with 20% cancellation fee if sewing has not started. If sewing has started: fabric + unfinished/finished garment returned to client, fabric and sewing costs deducted from deposit.'
+      title: 'Payment Policies',
+      content: '70% of the total cost is due as a deposit to secure the date upon agreement between Angela Hayford and the client. The remaining 30% is due one week before the pickup date. The dress remains in the studio until payment is completed before pickup or delivery. Payment validates the booking.'
+    },
+    {
+      title: 'Dress Details & Changes',
+      content: 'Major changes to the approved final design may be requested within three weeks after consultation. Minor changes, where applicable, may be requested within an additional two weeks, making five weeks in total. Major changes after five weeks attract a fee of 30% of the total gown cost. Additional fabric, trims, embellishments and materials required by changes are paid for by the client and approved before work begins. Changing the entire design after five weeks with the same fabric requires an additional 50% of the total cost. A totally different design is charged at a new ratecard price, with fabric costs charged separately where applicable.'
+    },
+    {
+      title: 'Cancellation & Change of Dates',
+      content: 'If the contract is cancelled by the client two months or less before the booked date and sewing has not started, the deposit is refundable after three months less a 20% cancellation fee of the total amount deposited. If sewing has started, the fabric and unfinished or finished garment will be returned to the client, and the total fabric and sewing costs will be deducted from the deposit. Clients must attend at least two fittings before collection; otherwise, the designer is not responsible for fitting problems or alteration costs.'
+    },
+    {
+      title: 'Measurements',
+      content: 'Clients must be available for measurements and disclose pregnancy, weight loss or weight gain before production of the final garment. Angela Hayford is not responsible for fit issues caused by failure or delay in communicating these changes. If a client is unavailable, they should engage another individual or professional to take accurate measurements, including all relevant body parts.'
     },
     {
       title: 'Fittings',
-      content: 'Clients must attend at least two fittings before collection of outfits. Failure to do so means designer is not liable for fitting problems or alteration costs.'
+      content: 'Achieving the perfect fit drives the quality of the work. Three fittings are conducted at different stages of garment production, and clients should attend all three. Fittings should be scheduled three weeks before the event. For clients outside Ghana, the garment may be delivered to the destination and returned if alterations or other work is needed. Angela Hayford is not responsible for fit disparities when a client chooses to forgo fittings.'
     },
     {
       title: 'Transportation & Accommodation',
-      content: 'Transportation discussed based on location. Bridal dress up: Accra GHS 600, Outside Accra GHS 1500, Outside Ghana GHS 2500–3500. Client responsible for travel, accommodation, and feeding for events outside Accra. Flights booked by client for locations outside Ghana and outside Accra like Kumasi, Takoradi, North, Brong Ahafo.'
+      content: 'Transportation is discussed based on location. Bridal dress-up is GHS 1,000–1,500 within Accra, GHS 1,500–2,000 outside Accra, and GHS 2,500–3,500 outside Ghana. The client is responsible for travel, accommodation and feeding for events outside Accra. Clients outside Ghana, as well as clients outside Accra including Kumasi, Takoradi, the North and Brong Ahafo, are responsible for booking round-trip flights.'
+    },
+    {
+      title: 'Confidentiality',
+      content: 'Angela Hayford will hold all client data and sensitive information shared during consultation in confidence.'
+    },
+    {
+      title: 'Agreement',
+      content: 'No changes may be made to details agreed upon after consultation without the applicable penalties. The client confirms that all information that may affect the fit of the garment, including pregnancy or an intention to lose weight, has been disclosed. This agreement represents all terms and conditions agreed by the parties; no other oral or written understanding regarding the agreement is binding.'
     }
   ]
 
