@@ -7,7 +7,7 @@ const TermsSection = () => {
   const terms = [
     {
       title: 'Consultation Policy',
-      content: 'Consultations guide the client on fit, colour, fabric choice and design. Clients should share style inspirations for custom garments. Consultations may be virtual or in person, and the GHS 1,000 fee is paid after the date and time are scheduled. A client may attend with a partner, family member or friend, limited to two accompanying persons. Consultation fees are non-refundable.'
+      content: 'The main purpose of consultation is to guide the client to achieve the right fit with adequate information on colour, fabric choice and design. Clients should share style inspirations with the designer for custom garments. Consultations may be virtual or in person, and the initial consultation fee of GHS 1,000 must be paid after the date and time are scheduled. The consultation lasts 30 minutes. Clients may attend with a partner, family member or friend, but attendance must be limited to not more than two persons. Consultation fees are non-refundable. The consultation fee will be deducted from the final invoice.'
     },
     {
       title: 'Payment Policies',
@@ -71,6 +71,10 @@ const TermsSection = () => {
           </motion.div>
         ))}
       </div>
+      <motion.div variants={fadeUp} className='mt-10 text-center'>
+        <p className='text-sm font-semibold text-zinc-900 dark:text-white'>Thank you</p>
+        <p className='mt-1 text-sm text-zinc-600 dark:text-zinc-400'>We would love to work with you.</p>
+      </motion.div>
     </motion.section>
   )
 }

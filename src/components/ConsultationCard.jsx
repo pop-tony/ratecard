@@ -30,8 +30,8 @@ const ConsultationCard = () => {
   const details = [
     { icon: <Info className='h-5 w-5' />, title: 'Consultation Fee', desc: 'GHS 1,000 for a 30-minute session. The fee is deducted from the final invoice.' },
     { icon: <Clock className='h-5 w-5' />, title: 'Booking Timeline', desc: 'Bridal bookings must be made 6–12 months before the event date.' },
-    { icon: <AlertCircle className='h-5 w-5' />, title: 'Style Preparation', desc: 'Bring style inspirations. Indecisive clients should book consultation first' },
-    { icon: <Scissors className='h-5 w-5' />, title: 'Mock-ups', desc: 'Style inspiration mock-ups charged separately. Price set by designer after consultation' },
+    { icon: <AlertCircle className='h-5 w-5' />, title: 'Style Preparation', desc: 'Clients must provide style inspirations for exactly what they want. If you are indecisive or need professional advice, book a consultation to discuss dress styles and details with the designer.' },
+    { icon: <Scissors className='h-5 w-5' />, title: 'Mock-ups', desc: 'A mock-up of the style inspiration is charged separately. The price will be determined by the designer.' },
   ]
 
   useEffect(() => {
@@ -129,6 +129,16 @@ const ConsultationCard = () => {
                 </div>
               </motion.div>
             ))}
+          </div>
+
+          <div className='mt-8 rounded-xl border border-amber-300 bg-amber-50 p-4 text-xs leading-relaxed text-amber-900 dark:border-amber-400/20 dark:bg-amber-500/10 dark:text-amber-200 sm:rounded-2xl sm:p-5 sm:text-sm'>
+            <p className='font-semibold'>NB:</p>
+            <ul className='mt-2 list-disc space-y-1.5 pl-4'>
+              <li>Clients must provide style inspirations for exactly what they want.</li>
+              <li>If a client is indecisive or needs professional advice concerning styles, they should book a consultation to discuss options and dress details with the designer.</li>
+              <li>A mock-up of the style inspiration is charged separately, and the price will be determined by the designer.</li>
+              <li>Bridal bookings must be done 6–12 months prior to the event date.</li>
+            </ul>
           </div>
 
           <motion.button

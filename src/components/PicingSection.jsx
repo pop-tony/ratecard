@@ -18,6 +18,12 @@ const fadeUp = {
 
 // Add desc + images to each package. Drop your image URLs in images: []
 const PRICING_DATA = {
+  veil: [
+    { id: 1, name: 'Plain cathedral veil', price: 'GHS 500', popular: false,
+      desc: 'Plain cathedral veil.', images: [] },
+    { id: 2, name: 'Custom veil with boarders or embellishment', price: 'GHS 1,500–2,500', popular: false,
+      desc: 'Custom veil with boarders or embellishment.', images: [] },
+  ],
   wedding: [
     { id: 1, name: 'Luxe Court Wedding Dress', price: 'GHS 6,000–7,000', popular: false,
       desc: 'A luxe court wedding dress. Rates are fabric inclusive and may differ for plus size.',
@@ -73,58 +79,58 @@ const PRICING_DATA = {
     },
   ],
   reception: [
-    { id: 1, name: 'Plain Reception Gown', price: 'GHS 5,000–7,000', popular: false,
-      desc: 'A plain reception gown. Rates may differ for plus size.', images: [] },
-    { id: 2, name: 'Short Reception Dress with Normal Beaded Lace', price: 'GHS 6,500–8,000', popular: false,
-      desc: 'Short reception dress with normal beaded lace. Rates may differ for plus size.', images: [] },
-    { id: 3, name: 'Long Reception Dress with Normal Beaded Lace', price: 'GHS 9,000–12,000', popular: false,
-      desc: 'Long reception dress with normal beaded lace. Rates may differ for plus size.', images: [] },
-    { id: 4, name: 'Short Reception Dress with Luxury Lace', price: 'GHS 9,500–15,000', popular: false,
-      desc: 'Short reception dress with luxury lace. Rates may differ for plus size.', images: [] },
-    { id: 5, name: 'Long Reception Dress with Luxury Lace', price: 'GHS 13,000–20,000', popular: false,
-      desc: 'Long reception dress with luxury lace. Rates may differ for plus size.', images: [] },
-    { id: 6, name: 'Deluxe Reception Dress with Luxury Lace', price: 'GHS 17,000–25,000', popular: true,
-      desc: 'Deluxe reception dress with luxury lace. Rates may differ for plus size.', images: [] },
-    { id: 7, name: 'Custom Hand-Beaded Reception Dress (Short)', price: 'GHS 15,000–20,000', popular: false,
-      desc: 'Custom short hand-beaded reception dress. Rates may differ for plus size.', images: [] },
-    { id: 8, name: 'Custom Hand-Beaded Reception Dress (Long)', price: 'GHS 25,000–30,000', popular: false,
-      desc: 'Custom long hand-beaded reception dress. Rates may differ for plus size.', images: [] },
+    { id: 1, name: 'Plain reception gown', price: 'GHS 5,000–7,000', popular: false,
+      desc: 'A plain reception gown.', images: [] },
+    { id: 2, name: 'Short reception dress with normal beaded lace', price: 'GHS 6,500–8,000', popular: false,
+      desc: 'Short reception dress with normal beaded lace.', images: [] },
+    { id: 3, name: 'Long reception dress with normal beaded lace', price: 'GHS 9,000–12,000', popular: false,
+      desc: 'Long reception dress with normal beaded lace.', images: [] },
+    { id: 4, name: 'Short Reception dress with luxury lace', price: 'GHS 9,500–15,000', popular: false,
+      desc: 'Short reception dress with luxury lace.', images: [] },
+    { id: 5, name: 'Long reception dress with luxury lace', price: 'GHS 13,000–20,000', popular: false,
+      desc: 'Long reception dress with luxury lace.', images: [] },
+    { id: 6, name: 'Deluxe reception dress with luxury lace', price: 'GHS 17,000–25,000', popular: true,
+      desc: 'Deluxe reception dress with luxury lace.', images: [] },
+    { id: 7, name: 'Custom hand beaded reception dress: Short', price: 'GHS 15,000–20,000', popular: false,
+      desc: 'Custom hand beaded reception dress: Short.', images: [] },
+    { id: 8, name: 'Custom hand beaded reception dress: Long', price: 'GHS 25,000–30,000', popular: false,
+      desc: 'Custom hand beaded reception dress: Long.', images: [] },
   ],
   bridal: [
-    { id: 1, name: 'Luxe Bridal Shower Dress', price: 'GHS 2,500–5,000', popular: false,
-      desc: 'A luxe bridal shower dress. Rates may differ for plus size.',
+    { id: 1, name: 'Luxe', price: 'GHS 2,500–5,000', popular: false,
+      desc: 'A luxe bridal shower dress.',
       images: []
     },
-    { id: 2, name: 'Deluxe Bridal Shower Dress', price: 'GHS 4,500–7,500', popular: false,
-      desc: 'A deluxe bridal shower dress. Rates may differ for plus size.',
+    { id: 2, name: 'Deluxe', price: 'GHS 4,500–7,500', popular: false,
+      desc: 'A deluxe bridal shower dress.',
       images: []
     },
   ],
   thanksgiving: [
-    { id: 1, name: 'Luxe Thanksgiving Dress', price: 'GHS 4,500–6,000', popular: false,
-      desc: 'A luxe thanksgiving dress. Rates may differ for plus size.',
+    { id: 1, name: 'Luxe', price: 'GHS 4,500–6,000', popular: false,
+      desc: 'A luxe thanksgiving dress.',
       images: []
     },
-    { id: 2, name: 'Deluxe Thanksgiving Dress', price: 'GHS 7,000–9,000', popular: true,
-      desc: 'A deluxe thanksgiving dress. Rates may differ for plus size.',
+    { id: 2, name: 'Deluxe', price: 'GHS 7,000–9,000', popular: true,
+      desc: 'A deluxe thanksgiving dress.',
       images: []
     },
   ],
   engagement: [
-    { id: 1, name: 'Simple Engagement Gown', price: 'GHS 6,000–7,500', popular: false,
-      desc: 'A simple engagement or traditional gown. Price does not include fabric and may differ for plus size.',
+    { id: 1, name: 'Simple gown', price: 'GHS 6,000–7,500', popular: false,
+      desc: 'Simple engagement or traditional gown.',
       images: []
     },
-    { id: 2, name: 'Classic Engagement Gown', price: 'GHS 8,500–9,500', popular: false,
-      desc: 'A classic engagement or traditional gown. Price does not include fabric and may differ for plus size.',
+    { id: 2, name: 'Classic gown', price: 'GHS 8,500–9,500', popular: false,
+      desc: 'Classic engagement or traditional gown.',
       images: []
     },
-    { id: 3, name: 'Luxe Engagement Gown', price: 'GHS 10,000–12,000', popular: true,
-      desc: 'A luxe engagement or traditional gown. Price does not include fabric and may differ for plus size.',
+    { id: 3, name: 'Luxe gown', price: 'GHS 10,000–12,000', popular: true,
+      desc: 'Luxe engagement or traditional gown.',
       images: []
     },
-    { id: 4, name: 'Deluxe Engagement Gown', price: 'GHS 15,000–18,000', popular: false,
-      desc: 'A deluxe engagement or traditional gown. Price does not include fabric and may differ for plus size.',
+    { id: 4, name: 'Deluxe gown', price: 'GHS 15,000–18,000', popular: false,
+      desc: 'Deluxe engagement or traditional gown.',
       images: []
     },
   ],
@@ -132,11 +138,21 @@ const PRICING_DATA = {
 
 const TABS = [
   { key: 'wedding', label: 'Wedding Gowns' },
+  { key: 'veil', label: 'Veils' },
   { key: 'reception', label: 'Reception Dresses' },
   { key: 'bridal', label: 'Bridal Shower' },
   { key: 'thanksgiving', label: 'Thanksgiving' },
   { key: 'engagement', label: 'Engagement' },
 ]
+
+const TAB_NOTES = {
+  wedding: 'Rates are fabric inclusive and price may differ for plus size.',
+  veil: 'Rates are fabric inclusive and price may differ for plus size.',
+  reception: 'Rates may differ for a plus size.',
+  bridal: 'Rates may differ for a plus size.',
+  thanksgiving: 'Rates may differ for a plus size.',
+  engagement: 'rates may differ for a plus size and price does not include fabric.',
+}
 
 const PricingSection = () => {
   const [activeTab, setActiveTab] = useState('wedding')
@@ -182,9 +198,7 @@ const PricingSection = () => {
         </div>
 
         <motion.div variants={fadeUp} className='mb-10 text-center md:mb-16'>
-          <span className='mb-3 inline-block rounded-full border border-rose-300 bg-rose-50 px-3 py-1 text- font-semibold uppercase tracking-wider text-rose-600 dark:border-rose-400/20 dark:bg-rose-500/10 dark:text-rose-300 sm:px-4 sm:py-1.5 sm:text-xs'>
-            Investment
-          </span>
+          
           <h2 className='bg-gradient-to-b from-zinc-900 to-zinc-600 bg-clip-text text-3xl font-black text-transparent dark:from-white dark:to-zinc-400 sm:text-4xl md:text-5xl lg:text-6xl'>
             Packages & Pricing
           </h2>
@@ -273,19 +287,15 @@ const PricingSection = () => {
           ))}
         </motion.div>
 
-        {/* Notes */}
         <motion.div
-          variants={fadeUp}
-          custom={2}
-          className='mx-auto mt-12 grid max-w-4xl gap-3 text-xs sm:mt-16 sm:gap-4 sm:text-sm md:grid-cols-2'
+          key={`${activeTab}-note`}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          className='mx-auto mt-8 max-w-4xl rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm leading-relaxed text-amber-900 dark:border-amber-400/20 dark:bg-amber-500/10 dark:text-amber-200 sm:mt-10 sm:rounded-2xl sm:p-5'
         >
-          <div className='rounded-xl border border-amber-300 bg-amber-50 p-4 text-amber-900 dark:border-amber-400/20 dark:bg-gradient-to-br dark:from-amber-500/10 dark:to-transparent dark:text-amber-200/90 sm:rounded-2xl sm:p-5'>
-            <span className='font-semibold text-amber-950 dark:text-amber-200'>Note:</span> Wedding dress rates are fabric inclusive. Engagement/traditional gown rates exclude fabric. Rates may differ for plus size.
-          </div>
-          <div className='rounded-xl border border-zinc-200 bg-zinc-50 p-4 text-zinc-700 dark:border-white/10 dark:bg-zinc-900/40 dark:text-zinc-300 sm:rounded-2xl sm:p-5'>
-            <span className='font-semibold text-zinc-900 dark:text-white'>Veil:</span> Plain cathedral GHS 500. Custom veil with borders GHS 1,500–2,500.
-          </div>
+          <span className='font-semibold'>NB:</span> {TAB_NOTES[activeTab]}
         </motion.div>
+
       </motion.section>
 
       {/* Modal - Mobile first */}

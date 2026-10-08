@@ -100,6 +100,15 @@ const ClientIntakeForm = () => {
           </motion.div>
         </div>
 
+        <motion.label variants={fadeUp} className='mt-8 flex items-start gap-3 text-sm text-zinc-600 dark:text-zinc-400'>
+          <input
+            type='checkbox'
+            required
+            className='mt-0.5 h-4 w-4 shrink-0 accent-rose-500'
+          />
+          <span>I have read and agree to the Terms & Conditions and confirm that the information provided is accurate.</span>
+        </motion.label>
+
         <motion.button
           variants={fadeUp}
           className='mt-10 w-full rounded-xl bg-gradient-to-r from-rose-500 to-amber-500 py-3 font-semibold text-white transition-transform hover:scale-[1.01] active:scale-[0.99] dark:text-zinc-900 md:w-auto md:px-8'
